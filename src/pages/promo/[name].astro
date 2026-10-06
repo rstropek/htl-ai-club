@@ -1,0 +1,81 @@
+---
+// Full HD promo image for the Cloudflight Coding Contest, for the screen in the school entrance.
+// Source only: this route exists in `astro dev` and is never part of the published site.
+// `npm run promo` renders it to promo/ccc-1920x1080.png.
+export function getStaticPaths() {
+  return import.meta.env.DEV ? [{ params: { name: 'ccc' } }] : [];
+}
+
+import '@fontsource/monaspace-neon/400.css';
+import '@fontsource/monaspace-neon/700.css';
+import '@fontsource/monaspace-radon/400.css';
+import '../../styles/global.css';
+import '../../styles/promo.css';
+import Banner from '../../components/Banner.astro';
+import Glyph from '../../components/Glyph.astro';
+import logoSource from '../../assets/promo/ccc-logo.svg?raw';
+import { site } from '../../data/site';
+import { getSemesters } from '../../lib/sessions';
+import { qrPath } from '../../lib/qr';
+
+const sessions = (await getSemesters()).flatMap((s) => s.sessions);
+const ccc = sessions.find((s) => s.title.includes('Cloudflight'));
+if (!ccc?.links?.[0]) throw new Error('The CCC session and its registration link must exist in the semester data.');
+const registration = ccc.links[0].url;
+const shortUrl = registration.replace(/^https?:\/\//, '');
+const qr = qrPath(registration);
+
+// Inline the official logo cropped to its drawing, without the XML prolog.
+const logo = logoSource
+  .replace(/<\?xml[^>]*>\s*/, '')
+  .replace('viewBox="0 0 650.62 296.64"', 'viewBox="49.97 56.77 550.68 184.32" role="img" aria-label="Cloudflight Coding Contest"');
+const siteUrl = site.publicUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CCC at JKU Linz · AI Club</title>
+  </head>
+  <body class="promo-body">
+    <main class="promo">
+      <div class="promo-main">
+        <p class="p-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span>/next</span></p>
+
+        <p class="p-msg"><Glyph name="dot" /><span>Coming up: a coding contest.</span></p>
+
+        <h1 class="p-logo" set:html={logo} />
+
+        <dl class="p-facts">
+          <dt>when</dt>
+          <dd><b>{ccc.longDate}</b><span class="p-time">{ccc.timeRange}</span></dd>
+          <dt>where</dt>
+          <dd><b>{ccc.place}</b></dd>
+        </dl>
+      </div>
+
+      <section class="p-permission" aria-labelledby="p-q">
+        <h2 id="p-q" class="p-q">Register for the CCC?</h2>
+        <p class="p-opt"><Glyph name="pointer" /><span class="p-opt-n">1.</span><span>Yes, scan the code</span></p>
+        <figure class="p-qr">
+          <svg viewBox={`0 0 ${qr.view} ${qr.view}`} shape-rendering="crispEdges" role="img" aria-label="QR code to the CCC registration form">
+            <rect class="qr-paper" width={qr.view} height={qr.view} />
+            <path class="qr-ink" d={qr.d} />
+          </svg>
+        </figure>
+        <p class="p-url">{shortUrl}</p>
+      </section>
+
+      <footer class="p-status">
+        <div class="p-banner"><Banner /></div>
+        <p class="p-sender">
+          <b>{site.fullName}</b>
+          <span class="dim">a student club at {site.school}</span>
+        </p>
+        <p class="p-site dim">{siteUrl}</p>
+      </footer>
+    </main>
+  </body>
+</html>

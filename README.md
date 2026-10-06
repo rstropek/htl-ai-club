@@ -21,3 +21,11 @@ Each session has its own link, such as `/#w26-02`, which opens with that session
 ## Deploy
 
 Pushing to `main` builds and deploys through `.github/workflows/deploy.yml`. In the repository settings, set Pages to deploy from **GitHub Actions**. The workflow also rebuilds daily, so the next session stays correct for visitors without JavaScript.
+
+## Promo images
+
+`promo/ccc-1920x1080.png` is a Full HD image announcing the Cloudflight Coding Contest, for the screen in the school entrance. Its source is `src/pages/promo/[name].astro`, a route that exists only in `astro dev` and is never published. Date, time, place and the registration link come from the semester data, so after changing them run:
+
+```sh
+npm run promo     # writes promo/ccc-1920x1080.png (set CHROME_PATH if Chrome isn't found)
+```

@@ -1,0 +1,142 @@
+/* CCC promo: one 1920×1080 canvas in the site's terminal world, sized for reading across an entrance hall. */
+
+.promo-body {
+  margin: 0;
+  background: var(--bg);
+}
+
+.promo {
+  box-sizing: border-box;
+  width: 1920px;
+  height: 1080px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 660px;
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 96px;
+  padding: 64px 96px 48px;
+  font-size: 44px;
+  line-height: 1.35;
+}
+
+.promo-main {
+  align-self: center;
+  min-width: 0;
+}
+
+.p-prompt {
+  display: flex;
+  gap: 0.6em;
+  padding: 0.28em 0.6em;
+  margin-left: -0.6em;
+  border-radius: 10px;
+  background: var(--prompt-bg);
+  font-family: var(--hand);
+}
+
+.p-msg {
+  display: grid;
+  grid-template-columns: 1.4em 1fr;
+  margin-top: 1.1em;
+}
+
+.p-logo {
+  margin: 0.95em 0 1.1em;
+  width: 1010px;
+  max-width: 100%;
+}
+.p-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.p-facts {
+  display: grid;
+  grid-template-columns: 5.4ch minmax(0, 1fr);
+  column-gap: 0.7ch;
+  row-gap: 0.35em;
+  font-size: 56px;
+  line-height: 1.25;
+}
+.p-facts dt {
+  color: var(--dim);
+}
+.p-facts dd {
+  display: grid;
+}
+.p-time {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* the permission prompt, at poster scale */
+.p-permission {
+  align-self: center;
+  border: 3px solid var(--accent);
+  border-radius: 22px;
+  padding: 34px 40px 30px;
+  margin-bottom: 36px;
+}
+.p-q {
+  font-weight: 700;
+  font-size: 40px;
+}
+.p-opt {
+  display: grid;
+  grid-template-columns: 1.2em 2.6ch 1fr;
+  align-items: start;
+  margin-top: 0.5em;
+  color: var(--accent);
+  font-size: 40px;
+}
+.p-opt .g-pointer {
+  margin-top: calc((1lh - 1em) / 2);
+}
+.p-opt-n {
+  color: var(--accent);
+}
+.p-qr {
+  margin: 26px auto 0;
+  width: 440px;
+}
+.p-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+.qr-paper {
+  fill: #f6f4f1;
+}
+.qr-ink {
+  fill: #131215;
+}
+.p-url {
+  margin-top: 20px;
+  font-size: 25px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* status line: who is sending this */
+.p-status {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 40px;
+  padding-top: 34px;
+  border-top: 2px dashed var(--rule);
+  font-size: 28px;
+}
+.p-banner .banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.p-sender {
+  display: grid;
+}
+.p-site {
+  font-size: 26px;
+}
