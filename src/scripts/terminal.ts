@@ -10,9 +10,12 @@ interface Person {
 const root = document.documentElement;
 const data = JSON.parse(document.getElementById('aiclub-data')?.textContent || '{}') as {
   joinFormUrl?: string;
+  guestFormUrl?: string;
   people?: Person[];
 };
+// Typed commands print above the input box; join answers print right under the join prompt.
 const log = document.querySelector<HTMLElement>('[data-log]')!;
+const joinLog = document.querySelector<HTMLElement>('[data-join-log]') ?? log;
 const laterTemplate = document.querySelector<HTMLTemplateElement>('template[data-later]');
 const touch = matchMedia('(hover: none), (pointer: coarse)');
 const statusLabel: Record<Status, string> = { done: 'done', next: 'next session', upcoming: 'upcoming' };
@@ -61,6 +64,7 @@ function commandList() {
     ['/join', data.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)'],
     ['/next', 'show the next session'],
     ['/sessions', 'show all sessions, winter and summer'],
+    ['/guest', 'register as an external guest'],
     ['/people', 'show who runs the club'],
     ['/theme', 'switch between dark and light'],
     ['/help', 'list all commands'],
@@ -72,10 +76,26 @@ function commandList() {
   return dl;
 }
 
-function print(...nodes: Node[]) {
+function printTo(target: HTMLElement, ...nodes: Node[]) {
   const first = nodes[0] as HTMLElement | undefined;
-  log.append(...nodes);
+  target.append(...nodes);
   first?.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+}
+const print = (...nodes: Node[]) => printTo(log, ...nodes);
+
+function link(text: string, href: string) {
+  const a = el('a', '', text);
+  a.href = href;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  return a;
+}
+
+function guestMessage() {
+  const result: (string | Node)[] = data.guestFormUrl
+    ? [link('Register with the guest form', data.guestFormUrl), 'Then pick a date above.']
+    : ['Pick a date above and come by at the listed time and place.'];
+  return message(['External guests are welcome at our club meetings, at school or online.'], result);
 }
 
 /* ---------- theme ---------- */
@@ -198,15 +218,15 @@ document.addEventListener('click', (e) => {
 });
 
 /** Move the later semesters from their template into the transcript. Returns the first one. */
-function revealLater(withEcho?: string): HTMLElement | null {
+function revealLater(withEcho?: string, target: HTMLElement = log): HTMLElement | null {
   const existing = document.querySelector<HTMLElement>('[id^="sessions-"]');
   if (existing) return existing;
   if (!laterTemplate) return null;
   const fragment = laterTemplate.content.cloneNode(true) as DocumentFragment;
   const first = fragment.firstElementChild as HTMLElement | null;
   initSessions(fragment);
-  if (withEcho) log.append(echo(withEcho));
-  log.append(fragment);
+  if (withEcho) target.append(echo(withEcho));
+  target.append(fragment);
   laterTemplate.remove();
   applyStatus();
   hideSessionsOption();
@@ -274,18 +294,12 @@ function unlinkedJoin() {
 function answer(kind: string, label: string) {
   const q = `Join the AI Club? › ${label}`;
   if (kind === 'join') {
-    print(echo(q), unlinkedJoin());
+    printTo(joinLog, echo(q), unlinkedJoin());
   } else if (kind === 'sessions') {
-    const first = revealLater(q);
+    const first = revealLater(q, joinLog);
     first?.previousElementSibling?.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   } else if (kind === 'guest') {
-    print(
-      echo(q),
-      message(
-        ['Guests are welcome at our club meetings.'],
-        ['Pick a date above and come by at the listed time and place.'],
-      ),
-    );
+    printTo(joinLog, echo(q), guestMessage());
   }
 }
 
@@ -391,11 +405,7 @@ function run(raw: string) {
   switch (cmd) {
     case '/join': {
       if (data.joinFormUrl) {
-        const link = el('a', '', 'Open the sign-up form');
-        link.href = data.joinFormUrl;
-        link.target = '_blank';
-        link.rel = 'noopener';
-        print(said, message(['Opening the sign-up form in a new tab.'], [link]));
+        print(said, message(['Opening the sign-up form in a new tab.'], [link('Open the sign-up form', data.joinFormUrl)]));
         window.open(data.joinFormUrl, '_blank', 'noopener');
       } else print(said, unlinkedJoin());
       break;
@@ -421,6 +431,9 @@ function run(raw: string) {
       }
       break;
     }
+    case '/guest':
+      print(said, guestMessage());
+      break;
     case '/people': {
       const dl = el('dl', 'owners');
       for (const p of data.people ?? []) {

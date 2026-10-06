@@ -13,7 +13,7 @@ Audience: HTL Leonding students arriving from a class-chat link, mostly on portr
 
 Constraints: Astro static, GitHub Pages, dark by default, light via the `/theme` toggle, ~40-column phone reflow, no horizontal scroll. Sessions come from one YAML file per semester; done/next/upcoming derives from the date at runtime. Sessions expand in place to details when they exist; each has a deep link. No calendar link. Interface grammar of Claude Code, with the club's own glyph and accent; no Anthropic marks.
 
-Unresolved: Form URL. Sessions announce only date, time and place (no topics, no rooms).
+Sessions announce only date, time and place (no topics, no rooms).
 
 ## Direction contract
 
@@ -21,7 +21,7 @@ THESIS: The homepage is one replayed coding-agent session: a question typed, an 
 
 OWN-WORLD: Full-bleed terminal ground in both themes; Monaspace Neon for the agent, Monaspace Radon for everything the human types. Rounded single-rule boxes, ⏺ bullets and ⎿ elbows drawn as shapes, checkbox states, red/green diff rows with line numbers, a dim collapse hint `(ctrl+o to expand)`. One club accent (hot pink) owns the ◆ mark, caret, permission box, and the next session.
 
-STORY: A student sees the next date, reads what the club does, picks a session to see its details, sees an example of a swapped trick, and approves the join prompt.
+STORY: A student sees the next date, reads what the club does and how a session runs, picks a session to see its details, and approves the join prompt (or scans its QR code); the example of a swapped trick follows as proof.
 
 FIRST VIEWPORT: Welcome box: block-letter AI CLUB banner, full name and cwd on the left; Next session (the only pink heading) and tips on the right, stacked under the banner on phones. Then the typed question, a status-line beat, and the streamed pitch, set at a 16px phone / 18px desktop reading size (readability outranks fitting the checklist into the first desktop viewport).
 

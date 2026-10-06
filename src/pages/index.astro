@@ -5,6 +5,7 @@ import '@fontsource/monaspace-radon/400.css';
 import '../styles/global.css';
 import Banner from '../components/Banner.astro';
 import Glyph from '../components/Glyph.astro';
+import QrCode from '../components/QrCode.astro';
 import SemesterRead from '../components/SemesterRead.astro';
 import { site } from '../data/site';
 import { getSemesters } from '../lib/sessions';
@@ -31,6 +32,7 @@ const commands = [
   { cmd: '/join', desc: site.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)' },
   { cmd: '/next', desc: 'show the next session' },
   { cmd: '/sessions', desc: 'show all sessions, winter and summer' },
+  { cmd: '/guest', desc: 'register as an external guest' },
   { cmd: '/people', desc: 'show who runs the club' },
   { cmd: '/theme', desc: 'switch between dark and light' },
   { cmd: '/help', desc: 'list all commands' },
@@ -125,7 +127,7 @@ const commands = [
             <ol class="tips" role="list">
               <li><span class="tip-n">1.</span> Bring a laptop. No coding agent of your own? Use Novedu, the school's free one.</li>
               <li><span class="tip-n">2.</span> No experience needed. Curiosity is.</li>
-              <li><span class="tip-n">3.</span> Guests are welcome at our club meetings.</li>
+              <li><span class="tip-n">3.</span> Most meetings are hybrid, so you can also join from home.</li>
             </ol>
           </div>
         </div>
@@ -147,6 +149,10 @@ const commands = [
           <ul class="dash-list" role="list" data-step>
             {pitch.map((line) => <li>{line}</li>)}
           </ul>
+          <p data-step>
+            It's open to all students, and to external guests. Attend at least half of the sessions and your
+            participation goes on your school report.
+          </p>
         </div>
       </section>
 
@@ -178,6 +184,60 @@ const commands = [
       <div data-step>
         <SemesterRead semester={current} id="sessions" />
       </div>
+
+      <template data-later>
+        {later.map((s) => <SemesterRead semester={s} id={`sessions-${s.key}`} />)}
+      </template>
+      <noscript>
+        {later.map((s) => <SemesterRead semester={s} id={`sessions-${s.key}`} />)}
+      </noscript>
+
+      <section class="permission" id="join" tabindex="-1" aria-labelledby="join-q" data-step>
+        <div class="permission-main">
+        <h2 id="join-q" class="permission-q">Join the AI Club?</h2>
+        <p class="dim">
+          {site.joinFormUrl ? 'Sign-up takes a minute, through a Microsoft Form.' : 'Sign-up runs through a Microsoft Form. The link is coming soon.'}
+        </p>
+        <ol class="options" role="list" data-options>
+          <li>
+            {
+              site.joinFormUrl ? (
+                <a class="opt" href={site.joinFormUrl} target="_blank" rel="noopener" data-opt="join">
+                  <Glyph name="pointer" />
+                  <span class="opt-n">1.</span>
+                  <span>Yes, open the sign-up form</span>
+                </a>
+              ) : (
+                <button type="button" class="opt" data-opt="join" data-unlinked>
+                  <Glyph name="pointer" />
+                  <span class="opt-n">1.</span>
+                  <span>Yes, sign me up</span>
+                </button>
+              )
+            }
+          </li>
+          <li data-opt-item="sessions">
+            <button type="button" class="opt" data-opt="sessions">
+              <Glyph name="pointer" />
+              <span class="opt-n">2.</span>
+              <span>Show me all sessions first</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="opt" data-opt="guest">
+              <Glyph name="pointer" />
+              <span class="opt-n">3.</span>
+              <span>I'm an external guest. How do I register?</span>
+            </button>
+          </li>
+        </ol>
+        <p class="dim keys kbd-hint"><span class="unit">↑↓ to move</span> · <span class="unit">enter to select</span> · <span class="unit">or press 1–3</span></p>
+        </div>
+        {site.joinFormUrl && <QrCode url={site.joinFormUrl} caption="scan to sign up" />}
+      </section>
+      <div class="log join-log" data-join-log aria-live="polite"></div>
+
+
 
       <section class="msg" aria-label="An example of what members take home" data-step>
         <Glyph name="dot" />
@@ -246,54 +306,6 @@ const commands = [
 
       <div class="log" data-log aria-live="polite"></div>
 
-      <template data-later>
-        {later.map((s) => <SemesterRead semester={s} id={`sessions-${s.key}`} />)}
-      </template>
-      <noscript>
-        {later.map((s) => <SemesterRead semester={s} id={`sessions-${s.key}`} />)}
-      </noscript>
-
-      <section class="permission" id="join" tabindex="-1" aria-labelledby="join-q" data-step>
-        <h2 id="join-q" class="permission-q">Join the AI Club?</h2>
-        <p class="dim">
-          {site.joinFormUrl ? 'Sign-up takes a minute, through a Microsoft Form.' : 'Sign-up runs through a Microsoft Form. The link is coming soon.'}
-        </p>
-        <ol class="options" role="list" data-options>
-          <li>
-            {
-              site.joinFormUrl ? (
-                <a class="opt" href={site.joinFormUrl} target="_blank" rel="noopener" data-opt="join">
-                  <Glyph name="pointer" />
-                  <span class="opt-n">1.</span>
-                  <span>Yes, open the sign-up form</span>
-                </a>
-              ) : (
-                <button type="button" class="opt" data-opt="join" data-unlinked>
-                  <Glyph name="pointer" />
-                  <span class="opt-n">1.</span>
-                  <span>Yes, sign me up</span>
-                </button>
-              )
-            }
-          </li>
-          <li data-opt-item="sessions">
-            <button type="button" class="opt" data-opt="sessions">
-              <Glyph name="pointer" />
-              <span class="opt-n">2.</span>
-              <span>Show me all sessions first</span>
-            </button>
-          </li>
-          <li>
-            <button type="button" class="opt" data-opt="guest">
-              <Glyph name="pointer" />
-              <span class="opt-n">3.</span>
-              <span>I'm a guest. How do I visit?</span>
-            </button>
-          </li>
-        </ol>
-        <p class="dim keys kbd-hint"><span class="unit">↑↓ to move</span> · <span class="unit">enter to select</span> · <span class="unit">or press 1–3</span></p>
-      </section>
-
       <form class="input" data-input autocomplete="off" data-step>
         <label class="sr-only" for="cmd">Type a command, for example /join</label>
         <div class="input-box">
@@ -339,6 +351,6 @@ const commands = [
     <script>
       import '../scripts/terminal';
     </script>
-    <script is:inline type="application/json" id="aiclub-data" set:html={JSON.stringify({ joinFormUrl: site.joinFormUrl, people: site.people })} />
+    <script is:inline type="application/json" id="aiclub-data" set:html={JSON.stringify({ joinFormUrl: site.joinFormUrl, guestFormUrl: site.guestFormUrl, people: site.people })} />
   </body>
 </html>
