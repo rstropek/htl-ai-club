@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-06T17:55:40+00:00",
+  "title": "Design System: AI Club",
+  "extensions": {
+    "colorMeta": {
+      "club-pink": {
+        "role": "primary",
+        "displayName": "Club Pink",
+        "canonical": "#c2185b",
+        "oklch": "oklch(53.1% 0.202 5.6)",
+        "theme": "light",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "oklch(15% 0.200 5.6)",
+          "oklch(26% 0.200 5.6)",
+          "oklch(38% 0.200 5.6)",
+          "oklch(50% 0.200 5.6)",
+          "oklch(62% 0.200 5.6)",
+          "oklch(74% 0.200 5.6)",
+          "oklch(85% 0.200 5.6)",
+          "oklch(95% 0.200 5.6)"
+        ],
+        "contrast": "5.68:1 on paper"
+      },
+      "club-pink-dark": {
+        "role": "primary",
+        "displayName": "Club Pink (dark)",
+        "canonical": "#ff5c93",
+        "oklch": "oklch(70.3% 0.202 3.1)",
+        "theme": "dark",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "oklch(15% 0.200 3.1)",
+          "oklch(26% 0.200 3.1)",
+          "oklch(38% 0.200 3.1)",
+          "oklch(50% 0.200 3.1)",
+          "oklch(62% 0.200 3.1)",
+          "oklch(74% 0.200 3.1)",
+          "oklch(85% 0.200 3.1)",
+          "oklch(95% 0.200 3.1)"
+        ],
+        "contrast": "6.40:1 on paper-dark"
+      },
+      "pink-wash": {
+        "role": "primary",
+        "displayName": "Pink Wash",
+        "canonical": "#fbe4ec",
+        "oklch": "oklch(94.0% 0.027 354.5)",
+        "theme": "light",
+        "cssVar": "--accent-soft",
+        "tonalRamp": [
+          "oklch(15% 0.027 354.5)",
+          "oklch(26% 0.027 354.5)",
+          "oklch(38% 0.027 354.5)",
+          "oklch(50% 0.027 354.5)",
+          "oklch(62% 0.027 354.5)",
+          "oklch(74% 0.027 354.5)",
+          "oklch(85% 0.027 354.5)",
+          "oklch(95% 0.027 354.5)"
+        ],
+        "note": "Declared in global.css; not applied on the homepage."
+      },
+      "pink-wash-dark": {
+        "role": "primary",
+        "displayName": "Pink Wash (dark)",
+        "canonical": "#3a1726",
+        "oklch": "oklch(26.2% 0.059 355.0)",
+        "theme": "dark",
+        "cssVar": "--accent-soft",
+        "tonalRamp": [
+          "oklch(15% 0.059 355.0)",
+          "oklch(26% 0.059 355.0)",
+          "oklch(38% 0.059 355.0)",
+          "oklch(50% 0.059 355.0)",
+          "oklch(62% 0.059 355.0)",
+          "oklch(74% 0.059 355.0)",
+          "oklch(85% 0.059 355.0)",
+          "oklch(95% 0.059 355.0)"
+        ],
+        "note": "Declared in global.css; not applied on the homepage."
+      },
+      "banner-shade": {
+        "role": "primary",
+        "displayName": "Banner Shade",
+        "canonical": "#f3c6d6",
+        "oklch": "oklch(87.0% 0.055 355.0)",
+        "theme": "light",
+        "cssVar": "--banner-shade",
+        "tonalRamp": [
+          "oklch(15% 0.055 355.0)",
+          "oklch(26% 0.055 355.0)",
+          "oklch(38% 0.055 355.0)",
+          "oklch(50% 0.055 355.0)",
+          "oklch(62% 0.055 355.0)",
+          "oklch(74% 0.055 355.0)",
+          "oklch(85% 0.055 355.0)",
+          "oklch(95% 0.055 355.0)"
+        ]
+      },
+      "banner-shade-dark": {
+        "role": "primary",
+        "displayName": "Banner Shade (dark)",
+        "canonical": "#5a1f37",
+        "oklch": "oklch(33.7% 0.091 357.8)",
+        "theme": "dark",
+        "cssVar": "--banner-shade",
+        "tonalRamp": [
+          "oklch(15% 0.091 357.8)",
+          "oklch(26% 0.091 357.8)",
+          "oklch(38% 0.091 357.8)",
+          "oklch(50% 0.091 357.8)",
+          "oklch(62% 0.091 357.8)",
+          "oklch(74% 0.091 357.8)",
+          "oklch(85% 0.091 357.8)",
+          "oklch(95% 0.091 357.8)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fcfbfa",
+        "oklch": "oklch(98.9% 0.002 67.8)",
+        "theme": "light",
+        "cssVar": "--bg",
+        "tonalRamp": [
+          "oklch(15% 0.002 67.8)",
+          "oklch(26% 0.002 67.8)",
+          "oklch(38% 0.002 67.8)",
+          "oklch(50% 0.002 67.8)",
+          "oklch(62% 0.002 67.8)",
+          "oklch(74% 0.002 67.8)",
+          "oklch(85% 0.002 67.8)",
+          "oklch(95% 0.002 67.8)"
+        ]
+      },
+      "paper-dark": {
+        "role": "neutral",
+        "displayName": "Paper (dark)",
+        "canonical": "#131215",
+        "oklch": "oklch(18.5% 0.006 301.0)",
+        "theme": "dark",
+        "cssVar": "--bg",
+        "tonalRamp": [
+          "oklch(15% 0.006 301.0)",
+          "oklch(26% 0.006 301.0)",
+          "oklch(38% 0.006 301.0)",
+          "oklch(50% 0.006 301.0)",
+          "oklch(62% 0.006 301.0)",
+          "oklch(74% 0.006 301.0)",
+          "oklch(85% 0.006 301.0)",
+          "oklch(95% 0.006 301.0)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1c1a1f",
+        "oklch": "oklch(22.2% 0.010 303.7)",
+        "theme": "light",
+        "cssVar": "--fg",
+        "tonalRamp": [
+          "oklch(15% 0.010 303.7)",
+          "oklch(26% 0.010 303.7)",
+          "oklch(38% 0.010 303.7)",
+          "oklch(50% 0.010 303.7)",
+          "oklch(62% 0.010 303.7)",
+          "oklch(74% 0.010 303.7)",
+          "oklch(85% 0.010 303.7)",
+          "oklch(95% 0.010 303.7)"
+        ],
+        "contrast": "16.7:1 on paper"
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Ink (dark)",
+        "canonical": "#ece9e5",
+        "oklch": "oklch(93.5% 0.006 75.4)",
+        "theme": "dark",
+        "cssVar": "--fg",
+        "tonalRamp": [
+          "oklch(15% 0.006 75.4)",
+          "oklch(26% 0.006 75.4)",
+          "oklch(38% 0.006 75.4)",
+          "oklch(50% 0.006 75.4)",
+          "oklch(62% 0.006 75.4)",
+          "oklch(74% 0.006 75.4)",
+          "oklch(85% 0.006 75.4)",
+          "oklch(95% 0.006 75.4)"
+        ],
+        "contrast": "15.4:1 on paper-dark"
+      },
+      "dim-ink": {
+        "role": "neutral",
+        "displayName": "Dim Ink",
+        "canonical": "#5e5965",
+        "oklch": "oklch(47.3% 0.020 304.5)",
+        "theme": "light",
+        "cssVar": "--dim",
+        "tonalRamp": [
+          "oklch(15% 0.020 304.5)",
+          "oklch(26% 0.020 304.5)",
+          "oklch(38% 0.020 304.5)",
+          "oklch(50% 0.020 304.5)",
+          "oklch(62% 0.020 304.5)",
+          "oklch(74% 0.020 304.5)",
+          "oklch(85% 0.020 304.5)",
+          "oklch(95% 0.020 304.5)"
+        ],
+        "contrast": "6.57:1 on paper"
+      },
+      "dim-ink-dark": {
+        "role": "neutral",
+        "displayName": "Dim Ink (dark)",
+        "canonical": "#a29da8",
+        "oklch": "oklch(70.4% 0.017 306.3)",
+        "theme": "dark",
+        "cssVar": "--dim",
+        "tonalRamp": [
+          "oklch(15% 0.017 306.3)",
+          "oklch(26% 0.017 306.3)",
+          "oklch(38% 0.017 306.3)",
+          "oklch(50% 0.017 306.3)",
+          "oklch(62% 0.017 306.3)",
+          "oklch(74% 0.017 306.3)",
+          "oklch(85% 0.017 306.3)",
+          "oklch(95% 0.017 306.3)"
+        ],
+        "contrast": "7.04:1 on paper-dark"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#d9d5dd",
+        "oklch": "oklch(87.9% 0.012 308.3)",
+        "theme": "light",
+        "cssVar": "--rule",
+        "tonalRamp": [
+          "oklch(15% 0.012 308.3)",
+          "oklch(26% 0.012 308.3)",
+          "oklch(38% 0.012 308.3)",
+          "oklch(50% 0.012 308.3)",
+          "oklch(62% 0.012 308.3)",
+          "oklch(74% 0.012 308.3)",
+          "oklch(85% 0.012 308.3)",
+          "oklch(95% 0.012 308.3)"
+        ]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule (dark)",
+        "canonical": "#3a3740",
+        "oklch": "oklch(34.3% 0.016 300.7)",
+        "theme": "dark",
+        "cssVar": "--rule",
+        "tonalRamp": [
+          "oklch(15% 0.016 300.7)",
+          "oklch(26% 0.016 300.7)",
+          "oklch(38% 0.016 300.7)",
+          "oklch(50% 0.016 300.7)",
+          "oklch(62% 0.016 300.7)",
+          "oklch(74% 0.016 300.7)",
+          "oklch(85% 0.016 300.7)",
+          "oklch(95% 0.016 300.7)"
+        ]
+      },
+      "hover-wash": {
+        "role": "neutral",
+        "displayName": "Hover Wash",
+        "canonical": "#f2f0ee",
+        "oklch": "oklch(95.6% 0.003 67.8)",
+        "theme": "light",
+        "cssVar": "--hover",
+        "tonalRamp": [
+          "oklch(15% 0.003 67.8)",
+          "oklch(26% 0.003 67.8)",
+          "oklch(38% 0.003 67.8)",
+          "oklch(50% 0.003 67.8)",
+          "oklch(62% 0.003 67.8)",
+          "oklch(74% 0.003 67.8)",
+          "oklch(85% 0.003 67.8)",
+          "oklch(95% 0.003 67.8)"
+        ]
+      },
+      "hover-wash-dark": {
+        "role": "neutral",
+        "displayName": "Hover Wash (dark)",
+        "canonical": "#1e1c21",
+        "oklch": "oklch(23.1% 0.010 303.7)",
+        "theme": "dark",
+        "cssVar": "--hover",
+        "tonalRamp": [
+          "oklch(15% 0.010 303.7)",
+          "oklch(26% 0.010 303.7)",
+          "oklch(38% 0.010 303.7)",
+          "oklch(50% 0.010 303.7)",
+          "oklch(62% 0.010 303.7)",
+          "oklch(74% 0.010 303.7)",
+          "oklch(85% 0.010 303.7)",
+          "oklch(95% 0.010 303.7)"
+        ]
+      },
+      "prompt-wash": {
+        "role": "neutral",
+        "displayName": "Prompt Wash",
+        "canonical": "#f1eff2",
+        "oklch": "oklch(95.5% 0.005 314.8)",
+        "theme": "light",
+        "cssVar": "--prompt-bg",
+        "tonalRamp": [
+          "oklch(15% 0.005 314.8)",
+          "oklch(26% 0.005 314.8)",
+          "oklch(38% 0.005 314.8)",
+          "oklch(50% 0.005 314.8)",
+          "oklch(62% 0.005 314.8)",
+          "oklch(74% 0.005 314.8)",
+          "oklch(85% 0.005 314.8)",
+          "oklch(95% 0.005 314.8)"
+        ]
+      },
+      "prompt-wash-dark": {
+        "role": "neutral",
+        "displayName": "Prompt Wash (dark)",
+        "canonical": "#1f1d22",
+        "oklch": "oklch(23.5% 0.010 303.7)",
+        "theme": "dark",
+        "cssVar": "--prompt-bg",
+        "tonalRamp": [
+          "oklch(15% 0.010 303.7)",
+          "oklch(26% 0.010 303.7)",
+          "oklch(38% 0.010 303.7)",
+          "oklch(50% 0.010 303.7)",
+          "oklch(62% 0.010 303.7)",
+          "oklch(74% 0.010 303.7)",
+          "oklch(85% 0.010 303.7)",
+          "oklch(95% 0.010 303.7)"
+        ]
+      },
+      "tool-ok": {
+        "role": "semantic",
+        "displayName": "Tool OK",
+        "canonical": "#1b7a3a",
+        "oklch": "oklch(51.1% 0.130 149.4)",
+        "theme": "light",
+        "cssVar": "--ok",
+        "tonalRamp": [
+          "oklch(15% 0.130 149.4)",
+          "oklch(26% 0.130 149.4)",
+          "oklch(38% 0.130 149.4)",
+          "oklch(50% 0.130 149.4)",
+          "oklch(62% 0.130 149.4)",
+          "oklch(74% 0.130 149.4)",
+          "oklch(85% 0.130 149.4)",
+          "oklch(95% 0.130 149.4)"
+        ]
+      },
+      "tool-ok-dark": {
+        "role": "semantic",
+        "displayName": "Tool OK (dark)",
+        "canonical": "#6fd08c",
+        "oklch": "oklch(78.1% 0.134 151.9)",
+        "theme": "dark",
+        "cssVar": "--ok",
+        "tonalRamp": [
+          "oklch(15% 0.134 151.9)",
+          "oklch(26% 0.134 151.9)",
+          "oklch(38% 0.134 151.9)",
+          "oklch(50% 0.134 151.9)",
+          "oklch(62% 0.134 151.9)",
+          "oklch(74% 0.134 151.9)",
+          "oklch(85% 0.134 151.9)",
+          "oklch(95% 0.134 151.9)"
+        ]
+      },
+      "diff-add-bg": {
+        "role": "semantic",
+        "displayName": "Diff Add Ground",
+        "canonical": "#ddf4e2",
+        "oklch": "oklch(94.5% 0.034 152.1)",
+        "theme": "light",
+        "cssVar": "--add-bg",
+        "tonalRamp": [
+          "oklch(15% 0.034 152.1)",
+          "oklch(26% 0.034 152.1)",
+          "oklch(38% 0.034 152.1)",
+          "oklch(50% 0.034 152.1)",
+          "oklch(62% 0.034 152.1)",
+          "oklch(74% 0.034 152.1)",
+          "oklch(85% 0.034 152.1)",
+          "oklch(95% 0.034 152.1)"
+        ]
+      },
+      "diff-add-bg-dark": {
+        "role": "semantic",
+        "displayName": "Diff Add Ground (dark)",
+        "canonical": "#173520",
+        "oklch": "oklch(29.9% 0.053 151.8)",
+        "theme": "dark",
+        "cssVar": "--add-bg",
+        "tonalRamp": [
+          "oklch(15% 0.053 151.8)",
+          "oklch(26% 0.053 151.8)",
+          "oklch(38% 0.053 151.8)",
+          "oklch(50% 0.053 151.8)",
+          "oklch(62% 0.053 151.8)",
+          "oklch(74% 0.053 151.8)",
+          "oklch(85% 0.053 151.8)",
+          "oklch(95% 0.053 151.8)"
+        ]
+      },
+      "diff-add-fg": {
+        "role": "semantic",
+        "displayName": "Diff Add Text",
+        "canonical": "#11552a",
+        "oklch": "oklch(39.7% 0.097 150.9)",
+        "theme": "light",
+        "cssVar": "--add-fg",
+        "tonalRamp": [
+          "oklch(15% 0.097 150.9)",
+          "oklch(26% 0.097 150.9)",
+          "oklch(38% 0.097 150.9)",
+          "oklch(50% 0.097 150.9)",
+          "oklch(62% 0.097 150.9)",
+          "oklch(74% 0.097 150.9)",
+          "oklch(85% 0.097 150.9)",
+          "oklch(95% 0.097 150.9)"
+        ]
+      },
+      "diff-add-fg-dark": {
+        "role": "semantic",
+        "displayName": "Diff Add Text (dark)",
+        "canonical": "#b4f2c3",
+        "oklch": "oklch(90.7% 0.090 151.8)",
+        "theme": "dark",
+        "cssVar": "--add-fg",
+        "tonalRamp": [
+          "oklch(15% 0.090 151.8)",
+          "oklch(26% 0.090 151.8)",
+          "oklch(38% 0.090 151.8)",
+          "oklch(50% 0.090 151.8)",
+          "oklch(62% 0.090 151.8)",
+          "oklch(74% 0.090 151.8)",
+          "oklch(85% 0.090 151.8)",
+          "oklch(95% 0.090 151.8)"
+        ]
+      },
+      "diff-del-bg": {
+        "role": "semantic",
+        "displayName": "Diff Del Ground",
+        "canonical": "#fbe3e3",
+        "oklch": "oklch(93.5% 0.026 17.6)",
+        "theme": "light",
+        "cssVar": "--del-bg",
+        "tonalRamp": [
+          "oklch(15% 0.026 17.6)",
+          "oklch(26% 0.026 17.6)",
+          "oklch(38% 0.026 17.6)",
+          "oklch(50% 0.026 17.6)",
+          "oklch(62% 0.026 17.6)",
+          "oklch(74% 0.026 17.6)",
+          "oklch(85% 0.026 17.6)",
+          "oklch(95% 0.026 17.6)"
+        ]
+      },
+      "diff-del-bg-dark": {
+        "role": "semantic",
+        "displayName": "Diff Del Ground (dark)",
+        "canonical": "#3e1b1f",
+        "oklch": "oklch(27.4% 0.055 14.2)",
+        "theme": "dark",
+        "cssVar": "--del-bg",
+        "tonalRamp": [
+          "oklch(15% 0.055 14.2)",
+          "oklch(26% 0.055 14.2)",
+          "oklch(38% 0.055 14.2)",
+          "oklch(50% 0.055 14.2)",
+          "oklch(62% 0.055 14.2)",
+          "oklch(74% 0.055 14.2)",
+          "oklch(85% 0.055 14.2)",
+          "oklch(95% 0.055 14.2)"
+        ]
+      },
+      "diff-del-fg": {
+        "role": "semantic",
+        "displayName": "Diff Del Text",
+        "canonical": "#99201f",
+        "oklch": "oklch(44.8% 0.157 26.7)",
+        "theme": "light",
+        "cssVar": "--del-fg",
+        "tonalRamp": [
+          "oklch(15% 0.157 26.7)",
+          "oklch(26% 0.157 26.7)",
+          "oklch(38% 0.157 26.7)",
+          "oklch(50% 0.157 26.7)",
+          "oklch(62% 0.157 26.7)",
+          "oklch(74% 0.157 26.7)",
+          "oklch(85% 0.157 26.7)",
+          "oklch(95% 0.157 26.7)"
+        ]
+      },
+      "diff-del-fg-dark": {
+        "role": "semantic",
+        "displayName": "Diff Del Text (dark)",
+        "canonical": "#ffb8b5",
+        "oklch": "oklch(84.8% 0.083 21.7)",
+        "theme": "dark",
+        "cssVar": "--del-fg",
+        "tonalRamp": [
+          "oklch(15% 0.083 21.7)",
+          "oklch(26% 0.083 21.7)",
+          "oklch(38% 0.083 21.7)",
+          "oklch(50% 0.083 21.7)",
+          "oklch(62% 0.083 21.7)",
+          "oklch(74% 0.083 21.7)",
+          "oklch(85% 0.083 21.7)",
+          "oklch(95% 0.083 21.7)"
+        ]
+      }
+    },
+    "themes": {
+      "default": "light",
+      "switch": "prefers-color-scheme: dark, overridden by :root[data-theme='light'|'dark'] (persisted in localStorage 'aiclub-theme')"
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Body (agent voice)",
+        "purpose": "All agent output; one size for the whole page.",
+        "source": "@fontsource/monaspace-neon 400"
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Tool names, headings, emphasis: weight only, never size.",
+        "source": "@fontsource/monaspace-neon 700"
+      },
+      "human": {
+        "displayName": "Human voice",
+        "purpose": "Everything the human types: prompt band, echoed answers, input field.",
+        "source": "@fontsource/monaspace-radon 400"
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Expand and key hints, status line, copy chip."
+      },
+      "footnote": {
+        "displayName": "Footnote",
+        "purpose": "Footer only."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing: step reveals, session expand, spinner."
+      },
+      {
+        "name": "step-reveal",
+        "value": "opacity + translate 0 0.35em, 0.45s ease-out",
+        "purpose": "Each replay step fades and rises in."
+      },
+      {
+        "name": "type-char",
+        "value": "30ms per character, 220ms lead",
+        "purpose": "Typing of the human prompt behind a pink block cursor."
+      },
+      {
+        "name": "spinner-beat",
+        "value": "~820ms; spin-pulse 0.8s infinite",
+        "purpose": "Status-line thinking beat with a random verb and (esc to skip)."
+      },
+      {
+        "name": "banner-cells",
+        "value": "0.5s fade, 14ms stagger per diagonal",
+        "purpose": "Banner cells fill in when the welcome box appears."
+      },
+      {
+        "name": "session-expand",
+        "value": "grid-template-rows 0.32s ease-out",
+        "purpose": "Open and close session details."
+      },
+      {
+        "name": "hover",
+        "value": "0.15s rows and chips, 0.2s keys, input border, link underline",
+        "purpose": "State transitions."
+      },
+      {
+        "name": "replay-failsafe",
+        "value": "animation 0s 6s forwards",
+        "purpose": "Reveals every step if the script never runs."
+      },
+      {
+        "name": "replay-policy",
+        "value": "once per visit (sessionStorage 'aiclub-replayed'); not on hash URLs; keydown/pointerdown/wheel/touchstart finishes; never under prefers-reduced-motion, which also collapses transitions to 0.01ms",
+        "purpose": "The single authored motion and its exits."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-kv",
+        "value": "max-width: 21.5rem",
+        "purpose": "Key/value labels stack above values."
+      },
+      {
+        "name": "phone",
+        "value": "max-width: 34rem",
+        "purpose": "~40-column reflow; gutter 2ch, gap 1.35em, 6ch label column."
+      },
+      {
+        "name": "wide-padding",
+        "value": "min-width: 48rem",
+        "purpose": "Page padding 32px."
+      },
+      {
+        "name": "welcome-split",
+        "value": "min-width: 52rem",
+        "purpose": "Welcome box splits into two columns."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Command Key",
+      "kind": "button",
+      "refersTo": "command-key",
+      "description": "Slash command as a small key in the topbar; /join is the pink variant.",
+      "html": "<div class=\"ds-t\" style=\"display:flex;gap:1.5ch\"><button class=\"ds-key\">/theme <span class=\"ds-tdot\"></span></button><a class=\"ds-key ds-key-join\" href=\"#\">/join</a></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-key{display:inline-flex;align-items:center;gap:.8ch;padding:.15em 1ch;border:1px solid var(--rule);border-radius:6px;color:var(--fg);background:none;font:inherit;text-decoration:none;cursor:pointer;transition:border-color .2s,background-color .2s} .ds-key:hover{border-color:var(--accent);background:var(--hover)} .ds-key:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-key-join{border-color:var(--accent);color:var(--accent)} .ds-tdot{width:.75em;height:.75em;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}"
+    },
+    {
+      "name": "Permission Prompt",
+      "kind": "custom",
+      "refersTo": "permission-box",
+      "description": "The call to action: a pink-framed question with numbered options; the active one is pink with a chevron.",
+      "html": "<div class=\"ds-t\"><section class=\"ds-perm\"><p class=\"ds-q\">Join the AI Club?</p><p class=\"ds-dim\">Sign-up takes a minute, through a Microsoft Form.</p><div class=\"ds-opts\"><button class=\"ds-opt\" data-active><svg class=\"ds-ptr\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M4 2.25L8 6l-4 3.75\"/></svg><span class=\"ds-n\">1.</span><span>Yes, open the sign-up form</span></button><button class=\"ds-opt\"><svg class=\"ds-ptr\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M4 2.25L8 6l-4 3.75\"/></svg><span class=\"ds-n\">2.</span><span>Show me all sessions first</span></button></div><p class=\"ds-dim\" style=\"font-size:.92em\">↑↓ to choose · enter to confirm</p></section></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-perm{border:1.5px solid var(--accent);border-radius:10px;padding:1em 2ch 1.1em} .ds-q{margin:0;font-weight:700} .ds-perm p{margin:0} .ds-opts{margin:.8em 0 .6em -1ch} .ds-opt{display:grid;grid-template-columns:2.2ch 3ch 1fr;width:100%;padding:.25em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s,color .15s} .ds-opt:hover{background:var(--hover)} .ds-opt:focus-visible{outline:2px solid var(--accent)} .ds-n{color:var(--dim)} .ds-ptr{width:1em;height:1em;margin-top:.3em;visibility:hidden} .ds-ptr path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round} .ds-opt[data-active]{color:var(--accent)} .ds-opt[data-active] .ds-n{color:var(--accent)} .ds-opt[data-active] .ds-ptr{visibility:visible}"
+    },
+    {
+      "name": "Input Box",
+      "kind": "input",
+      "refersTo": "input-box",
+      "description": "The live command line: Radon input with a pink caret, rule border that darkens on focus, dim status line below.",
+      "html": "<div class=\"ds-t\"><div class=\"ds-in\"><span class=\"ds-dim\">&gt;</span><input placeholder=\"Try &quot;/join&quot; or &quot;/sessions&quot;\" aria-label=\"Command\"></div><div class=\"ds-status ds-dim\"><span>? for shortcuts · guests welcome</span><span>dark</span></div></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-in{display:grid;grid-template-columns:2.4ch 1fr;align-items:center;border:1.5px solid var(--rule);border-radius:10px;padding:.55em 2ch;transition:border-color .2s} .ds-in:focus-within{border-color:var(--dim)} .ds-in input{font:inherit;font-family:var(--hand);color:var(--fg);background:transparent;border:0;padding:0;outline:none;caret-color:var(--accent);min-width:0} .ds-in input::placeholder{color:var(--dim);opacity:1} .ds-status{display:flex;justify-content:space-between;padding:.35em 2ch 0;font-size:.92em}"
+    },
+    {
+      "name": "User Prompt",
+      "kind": "custom",
+      "refersTo": "user-prompt",
+      "description": "A line the human typed: prompt-wash band, dim > in the gutter, Radon text, pink block cursor while typing.",
+      "html": "<div class=\"ds-t\"><p class=\"ds-up\"><span class=\"ds-dim\" style=\"font-family:var(--mono)\">&gt;</span><span class=\"ds-typed\">what is this club?</span></p></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-up{display:grid;grid-template-columns:2.4ch 1fr;margin:0;background:var(--prompt-bg);padding:.35em 1ch;border-radius:4px;font-family:var(--hand)} .ds-typed::after{content:'';display:inline-block;width:.6em;height:1.1em;vertical-align:-.2em;margin-left:1px;background:var(--accent)}"
+    },
+    {
+      "name": "Tool Call with Result",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Green dot, bold tool name, dim path; result hangs under a drawn elbow.",
+      "html": "<div class=\"ds-t\"><div class=\"ds-msg\"><span class=\"ds-dot\"></span><div><p class=\"ds-call\"><b>Read</b>(<span class=\"ds-dim\">CODEOWNERS</span>)</p><div class=\"ds-res\"><span class=\"ds-elbow\"></span><p class=\"ds-dim\">Winter 26/27 · 6 sessions</p></div></div></div></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-msg,.ds-res{display:grid;grid-template-columns:2.4ch 1fr;align-items:start} .ds-msg p{margin:0} .ds-dot{display:inline-block;width:.56em;height:.56em;border-radius:50%;background:var(--ok);margin-top:calc((1.6em - .56em)/2)} .ds-elbow{display:inline-block;width:.7em;height:.62em;border-left:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);margin:.1em 0 0 .15em}"
+    },
+    {
+      "name": "Session Row",
+      "kind": "custom",
+      "refersTo": "session-row",
+      "description": "Checklist row: drawn checkbox, dim number, title, dim date; next session in pink with filled box and bold title.",
+      "html": "<div class=\"ds-t\"><button class=\"ds-row ds-next\"><svg class=\"ds-chk\" viewBox=\"0 0 12 12\"><rect x=\"1.5\" y=\"1.5\" width=\"9\" height=\"9\" rx=\"1\" class=\"b\"/><rect x=\"3.5\" y=\"3.5\" width=\"5\" height=\"5\" class=\"f\"/></svg><span class=\"ds-dim\">01</span><span class=\"ds-title\">CCC Cloudflight Coding Contest</span><span class=\"ds-date\">Fri 23 Oct</span></button><button class=\"ds-row\"><svg class=\"ds-chk\" viewBox=\"0 0 12 12\"><rect x=\"1.5\" y=\"1.5\" width=\"9\" height=\"9\" rx=\"1\" class=\"b\"/></svg><span class=\"ds-dim\">02</span><span class=\"ds-title\">Prompting is debugging<br><span class=\"ds-dim\" style=\"font-size:.92em\">… +10 lines (ctrl+o to expand)</span></span><span class=\"ds-date\">Wed 4 Nov</span></button></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-row{display:grid;grid-template-columns:2.4ch 3.2ch 1fr auto;width:100%;padding:.2em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s} .ds-row:hover{background:var(--hover)} .ds-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-chk{width:1em;height:1em;margin-top:.3em;color:var(--dim)} .ds-chk .b{fill:none;stroke:currentColor;stroke-width:1.2} .ds-chk .f{fill:currentColor} .ds-date{color:var(--dim);white-space:nowrap} .ds-title{padding-right:2ch} .ds-next .ds-chk,.ds-next .ds-date{color:var(--accent)} .ds-next .ds-title{font-weight:700} .ds-next .ds-title::after{content:'  ← next';font-weight:400;color:var(--accent);white-space:pre}"
+    },
+    {
+      "name": "Diff",
+      "kind": "custom",
+      "refersTo": "diff-row-add",
+      "description": "Line-numbered diff rows: dim context, red and green washes for removed and added lines.",
+      "html": "<div class=\"ds-t\"><div class=\"ds-diff\"><div class=\"ds-dr ctx\"><span class=\"ln\">14</span><span></span><span>## How to work with me</span></div><div class=\"ds-dr del\"><span class=\"ln\">15</span><span>-</span><span>Just fix it.</span></div><div class=\"ds-dr add\"><span class=\"ln\">15</span><span>+</span><span>Write a failing test first, then make it pass.</span></div></div></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-diff{border-radius:4px;overflow:hidden} .ds-dr{display:grid;grid-template-columns:4ch 2ch 1fr;padding-right:1ch} .ds-dr .ln{text-align:right;padding-right:1ch;color:var(--dim)} .ds-dr.ctx{color:var(--dim)} .ds-dr.add{background:var(--add-bg);color:var(--add-fg)} .ds-dr.del{background:var(--del-bg);color:var(--del-fg)} .ds-dr.add .ln,.ds-dr.del .ln{color:inherit;opacity:.8}"
+    },
+    {
+      "name": "Welcome Box",
+      "kind": "card",
+      "refersTo": "welcome-box",
+      "description": "The opening frame: pink 1.5px border, diamond mark, identity left, next session (the only pink heading) right.",
+      "html": "<div class=\"ds-t\"><section class=\"ds-wel\"><div class=\"ds-wm\"><p><svg class=\"ds-mark\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M6 .75L11.25 6 6 11.25.75 6z\"/></svg> Welcome to the <b>AI Club</b>!</p><p><b>Algorithmic Problem Solving with AI</b></p><p class=\"ds-dim\">cwd: ~/htl-leonding/ai-club</p></div><div class=\"ds-ws\"><p class=\"ds-side\">Next session</p><p><b>Fri 23 Oct · 10:00</b></p></div></section></div>",
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-wel{display:grid;grid-template-columns:1.35fr 1fr;border:1.5px solid var(--accent);border-radius:10px} .ds-wel p{margin:0} .ds-wm,.ds-ws{padding:1.1em 2ch 1.2em} .ds-ws{border-left:1px solid color-mix(in oklab,var(--accent) 45%,transparent)} .ds-side{color:var(--accent);font-weight:700} .ds-mark{width:1em;height:1em;vertical-align:-.12em} .ds-mark path{fill:var(--accent)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Replayed Session",
+    "overview": "**Creative North Star: \"The Replayed Session\"**\n\nThe whole site is one terminal coding-agent session played back to the visitor: a welcome box, a question the human typed, the agent's answer streamed as messages, tool calls whose results are the club's real data, a diff as the example of what members take home, a permission prompt as the call to action, and a live input box with a slash menu and a status line underneath. Every surface is a turn in that transcript. Nothing is a card, a hero or a pitch block; if a new piece of content cannot be expressed as something a session would print, it does not yet belong.\n\nThe ground is full-bleed and flat in both themes, a warm off-white paper by default and a near-black terminal by system preference or `/theme`. Density is that of a real terminal: one monospace voice, one text size, hierarchy carried by weight, dimming and the club pink rather than by scale. Structure comes from character-cell geometry: a fixed gutter column for bullets and elbows, `ch`-based grids for labels and numbers, rounded single-rule boxes for the moments that need a frame.\n\nThe club pink is the only hue that speaks for the club. Green and red appear only as the session's own semantics (a finished tool call, an added or removed diff line). The look nods to terminal coding agents generally and carries no vendor marks; the footer states it is not affiliated with any AI vendor.",
+    "keyCharacteristics": [
+      "One replayed session, top to bottom: welcome box, typed prompt, messages, tool calls with results, diff, permission prompt, input box, status line.",
+      "Two Monaspace voices: Neon for the agent, Radon for everything the human types.",
+      "One size of text; hierarchy by weight (400/700), dim ink and the club pink.",
+      "Terminal glyphs (message dot, result elbow, checkboxes, pointer, diamond mark, spinner) drawn as CSS or SVG shapes, never left to Unicode fallback fonts.",
+      "Light and dark token sets measured for AA body contrast, both first-class.",
+      "One authored replay motion per visit, skippable, absent under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Club Pink is the only hue that speaks for the club. Every pink element is either the club's mark, the human's caret, a frame around a moment that matters (welcome, permission), the next session, or an interactive state. If a second element on a screen asks for pink \"to make it pop\", it does not get it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Semantics-Only Green and Red Rule",
+        "body": "Green and red exist because the session prints them: finished tool calls and diff lines. They never appear as brand colour, status badges or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Measured Themes Rule",
+        "body": "Every colour token exists in a light and a dark value, switched by `prefers-color-scheme` and overridable by `data-theme`. A new token is not finished until both values are measured against their ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Size Rule",
+        "body": "There is no type scale. Headings are the body size in bold; small text steps down at most to 0.92em (0.88em in the footer). If something needs to be louder, it gets weight, pink, or a box, not a bigger size.",
+        "section": "typography"
+      },
+      {
+        "name": "The Who Typed It Rule",
+        "body": "Radon means a human typed it; Neon means the agent printed it. Never set agent output in Radon or a human's input in Neon.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Terminal Rule",
+        "body": "No `box-shadow`, no blur, no glass. A thing that needs separation gets a rule or a wash.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** express every new piece of content as something the session would print: a message, a tool call with a result, a prompt, a menu entry or a status line.",
+      "**Do** hang glyphs in the shared gutter column (2.4ch, 2ch on phones) so text starts on one character column.",
+      "**Do** draw terminal glyphs as CSS or SVG shapes, as the Glyph component does, so they render identically on every device.",
+      "**Do** set anything the human types in Monaspace Radon and everything the agent prints in Monaspace Neon.",
+      "**Do** carry hierarchy with weight 700, dim ink and the club pink, at the single body size.",
+      "**Do** define every new colour in both themes and measure it; dim text stays at or above the current 6.6:1 light and 7.0:1 dark.",
+      "**Do** keep phone layouts as a reflow at roughly 40 columns that preserves the 6ch label column, not a scaled-down desktop.",
+      "**Do** make motion skippable by any input, once per visit, and absent under reduced motion, with content visible without JavaScript."
+    ],
+    "donts": [
+      "**Don't** give pink to anything outside the One Voice Rule's list (mark, caret, welcome and permission frames, next session, banner, interactive state).",
+      "**Don't** add box shadows, gradients or blur; separate with a rule or a wash.",
+      "**Don't** introduce a type scale or a display face; the banner is the only display element.",
+      "**Don't** use green or red outside tool-call and diff semantics.",
+      "**Don't** use any AI vendor's logos, mascots or brand colours, or the school's visual branding.",
+      "**Don't** rely on rare Unicode characters (⏺ ⎿ ☒ ☐ ◼ ❯ ◆) rendering in fallback fonts; draw them."
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+# Summer semester 2027.
+# Dates and times are confirmed. Topics are placeholders.
+key: s27
+label: Summer 27
+order: 2
+note: Topics may still change.
+defaults:
+  start: "17:30"
+  end: "19:30"
+sessions:
+  - date: 2027-02-24
+    title: What changed over the break
+  - date: 2027-03-10
+    title: Tests first, then the agent
+  - date: 2027-03-31
+    title: Reading AI-written code critically
+  - date: 2027-04-14
+    title: Topic to be announced
+  - date: 2027-05-05
+    title: "Contest night: algorithmic problems, AI allowed"
+  - date: 2027-05-26
+    title: Topic to be announced
+  - date: 2027-06-09
+    title: Topic to be announced
+  - date: 2027-06-23
+    title: Showcase and tool tips

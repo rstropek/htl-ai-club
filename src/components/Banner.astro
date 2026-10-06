@@ -1,0 +1,40 @@
+---
+// Block-letter "AI CLUB" banner, drawn as terminal cells (each cell is one █).
+// Cells are 6×12 units, the proportions of a monospace character cell.
+const font: Record<string, string[]> = {
+  A: [' ███ ', '█   █', '█████', '█   █', '█   █'],
+  I: ['███', ' █ ', ' █ ', ' █ ', '███'],
+  C: [' ████', '█    ', '█    ', '█    ', ' ████'],
+  L: ['█    ', '█    ', '█    ', '█    ', '█████'],
+  U: ['█   █', '█   █', '█   █', '█   █', ' ███ '],
+  B: ['████ ', '█   █', '████ ', '█   █', '████ '],
+  ' ': ['  ', '  ', '  ', '  ', '  '],
+};
+const rows = [0, 1, 2, 3, 4].map((r) =>
+  [...'AI CLUB'].map((ch) => font[ch][r]).join(' '),
+);
+const W = 6;
+const H = 12;
+const cols = Math.max(...rows.map((r) => r.length));
+const cells: { x: number; y: number }[] = [];
+rows.forEach((row, y) => [...row].forEach((ch, x) => ch === '█' && cells.push({ x, y })));
+---
+
+<svg
+  class="banner"
+  viewBox={`0 0 ${cols * W + W / 2} ${rows.length * H + H / 3}`}
+  role="img"
+  aria-label="AI Club"
+  shape-rendering="crispEdges"
+>
+  <g class="banner-shade">
+    {cells.map(({ x, y }) => <rect x={x * W + W / 2} y={y * H + H / 3} width={W} height={H} />)}
+  </g>
+  <g class="banner-ink">
+    {
+      cells.map(({ x, y }) => (
+        <rect x={x * W} y={y * H} width={W} height={H} style={`--i:${x + y * 2}`} />
+      ))
+    }
+  </g>
+</svg>

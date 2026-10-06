@@ -1,0 +1,30 @@
+---
+version: 1
+slug: "src-pages-index-astro"
+primary_target: "src/pages/index.astro"
+related_targets: []
+---
+
+# Homepage
+
+Scope: the AI Club homepage (`src/pages/index.astro`). Visitor mode: Persuade.
+
+Audience: HTL Leonding students arriving from a class-chat link, mostly on portrait phones; guests second. Job: understand the club, see the next session, join. Action: "Yes, open the sign-up form" (Microsoft Form, URL pending). Proof: the page is the kind of session the club teaches; an example AGENTS.md diff shows what members take home.
+
+Constraints: Astro static, GitHub Pages, light + dark (system default, `/theme` toggle), ~40-column phone reflow, no horizontal scroll. Sessions come from one YAML file per semester; done/next/upcoming derives from the date at runtime. Sessions expand in place to details when they exist; each has a deep link. No calendar link. Interface grammar of Claude Code, with the club's own glyph and accent; no Anthropic marks.
+
+Unresolved: Form URL, rooms, and session topics other than the CCC (placeholders). Dates and times are confirmed.
+
+## Direction contract
+
+THESIS: The homepage is one replayed coding-agent session: a question typed, an answer streamed, tool calls returning the semester, a permission prompt as the call to action. It refuses the club landing template of headline, pitch, button, and a row of session cards.
+
+OWN-WORLD: Full-bleed terminal ground in both themes; Monaspace Neon for the agent, Monaspace Radon for everything the human types. Rounded single-rule boxes, ⏺ bullets and ⎿ elbows drawn as shapes, checkbox states, red/green diff rows with line numbers, a dim collapse hint `(ctrl+o to expand)`. One club accent (hot pink) owns the ◆ mark, caret, permission box, and the next session.
+
+STORY: A student sees the next date, reads what the club does, picks a session to see its details, sees an example of a swapped trick, and approves the join prompt.
+
+FIRST VIEWPORT: Welcome box: block-letter AI CLUB banner, full name and cwd on the left; Next session (the only pink heading) and tips on the right, stacked under the banner on phones. Then the typed question, a status-line beat, and the streamed pitch; on desktop the semester checklist starts in view.
+
+FORM: User-pinned direction (Claude Code session replay, variant A of three), overriding the roll; seed key 947183a8.
+
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

@@ -1,0 +1,35 @@
+---
+// Terminal glyphs drawn as shapes so they render identically on every device,
+// instead of depending on rare Unicode characters (⏺ ⎿ ☒ ☐ ◼ ❯ ◆) in system fallback fonts.
+interface Props {
+  name: 'dot' | 'elbow' | 'done' | 'next' | 'todo' | 'pointer' | 'mark';
+  class?: string;
+}
+const { name, class: className = '' } = Astro.props;
+---
+
+{name === 'dot' && <span class:list={['g-dot', className]} aria-hidden="true" />}
+{name === 'elbow' && <span class:list={['g-elbow', className]} aria-hidden="true" />}
+{
+  (name === 'done' || name === 'next' || name === 'todo') && (
+    <svg class:list={['g-check', className]} viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+      <rect class="g-check-box" x="1.5" y="1.5" width="9" height="9" rx="1" />
+      <path class="g-check-x" d="M3.75 3.75l4.5 4.5M8.25 3.75l-4.5 4.5" />
+      <rect class="g-check-fill" x="3.5" y="3.5" width="5" height="5" />
+    </svg>
+  )
+}
+{
+  name === 'pointer' && (
+    <svg class:list={['g-pointer', className]} viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+      <path d="M4 2.25L8 6l-4 3.75" />
+    </svg>
+  )
+}
+{
+  name === 'mark' && (
+    <svg class:list={['g-mark', className]} viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+      <path d="M6 .75L11.25 6 6 11.25.75 6z" />
+    </svg>
+  )
+}

@@ -1,0 +1,995 @@
+/* AI Club: a replayed coding-agent session.
+   Light theme is the default token set; dark applies by system preference or by choice. */
+
+:root {
+  color-scheme: light;
+  --bg: #fcfbfa;
+  --fg: #1c1a1f;
+  --dim: #5e5965;
+  --rule: #d9d5dd;
+  --hover: #f2f0ee;
+  --accent: #c2185b;
+  --on-accent: #fcfbfa;
+  --accent-soft: #fbe4ec;
+  --ok: #1b7a3a;
+  --add-bg: #ddf4e2;
+  --add-fg: #11552a;
+  --del-bg: #fbe3e3;
+  --del-fg: #99201f;
+  --prompt-bg: #f1eff2;
+  --banner-shade: #f3c6d6;
+
+  --mono: 'Monaspace Neon', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --hand: 'Monaspace Radon', 'Monaspace Neon', ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --gap: 1.6em;
+  --gutter: 2.4ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #131215;
+    --fg: #ece9e5;
+    --dim: #a29da8;
+    --rule: #3a3740;
+    --hover: #1e1c21;
+    --accent: #ff5c93;
+    --on-accent: #131215;
+    --accent-soft: #3a1726;
+    --ok: #6fd08c;
+    --add-bg: #173520;
+    --add-fg: #b4f2c3;
+    --del-bg: #3e1b1f;
+    --del-fg: #ffb8b5;
+    --prompt-bg: #1f1d22;
+    --banner-shade: #5a1f37;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #131215;
+  --fg: #ece9e5;
+  --dim: #a29da8;
+  --rule: #3a3740;
+  --hover: #1e1c21;
+  --accent: #ff5c93;
+  --on-accent: #131215;
+  --accent-soft: #3a1726;
+  --ok: #6fd08c;
+  --add-bg: #173520;
+  --add-fg: #b4f2c3;
+  --del-bg: #3e1b1f;
+  --del-fg: #ffb8b5;
+  --prompt-bg: #1f1d22;
+  --banner-shade: #5a1f37;
+}
+
+/* ---------- base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  scrollbar-color: var(--rule) var(--bg);
+  scroll-padding-top: 1.5rem;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: clamp(14.5px, 13.4px + 0.3vw, 17px);
+  line-height: 1.6;
+  font-feature-settings: 'calt' 1, 'liga' 1;
+  font-variant-numeric: tabular-nums;
+  caret-color: var(--accent);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+h1,
+h2,
+p,
+ol,
+ul,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+b {
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.2s;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.dim {
+  color: var(--dim);
+}
+.fg {
+  color: var(--fg);
+}
+.accent {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.4em 1ch;
+  background: var(--accent);
+  color: var(--on-accent);
+  text-decoration: none;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* ---------- glyphs ---------- */
+
+.g-dot {
+  display: inline-block;
+  width: 0.56em;
+  height: 0.56em;
+  border-radius: 50%;
+  background: var(--fg);
+  margin-top: calc((1lh - 0.56em) / 2);
+  flex: none;
+}
+.g-dot.ok {
+  background: var(--ok);
+}
+
+.g-elbow {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.62em;
+  border-left: 1.5px solid var(--dim);
+  border-bottom: 1.5px solid var(--dim);
+  margin-top: 0.1em;
+  margin-left: 0.15em;
+  flex: none;
+}
+
+.g-check,
+.g-pointer,
+.g-mark {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
+  flex: none;
+}
+.g-check-box {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+}
+.g-check-x {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  display: none;
+}
+.g-check-fill {
+  fill: currentColor;
+  display: none;
+}
+.g-pointer path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.g-mark path {
+  fill: var(--accent);
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 2ch;
+  max-width: 92ch;
+  margin: 0 auto;
+  padding: 0.9rem 16px;
+}
+.topbar-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 1ch;
+  font-weight: 700;
+  text-decoration: none;
+}
+.topbar-path {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.topbar-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 1.5ch;
+  flex: none;
+}
+
+.cmd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8ch;
+  padding: 0.15em 1ch;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
+}
+.cmd-btn:hover {
+  border-color: var(--accent);
+  background: var(--hover);
+}
+.cmd-btn.quiet {
+  border-color: transparent;
+  color: var(--dim);
+  padding-inline: 0.5ch;
+}
+.cmd-btn.quiet:hover {
+  color: var(--fg);
+}
+.topbar-nav .cmd-btn:last-child {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.theme-dot {
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+/* ---------- terminal column ---------- */
+
+.term {
+  max-width: 92ch;
+  margin: 0 auto;
+  padding: 0.5rem 16px 3rem;
+}
+
+.term > * + * {
+  margin-top: var(--gap);
+}
+
+/* welcome box: identity on the left, next session and tips on the right */
+
+.welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+}
+.welcome-main,
+.welcome-side {
+  padding: 1.1em 2ch 1.2em;
+}
+.welcome-side {
+  display: grid;
+  align-content: start;
+  gap: 1.2em;
+  border-top: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+}
+.welcome-title {
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+}
+.welcome-banner {
+  margin: 1.2em 0 1em;
+  max-width: 34rem;
+}
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.banner-ink rect {
+  fill: var(--accent);
+}
+.banner-shade rect {
+  fill: var(--banner-shade);
+}
+.welcome-full {
+  font-weight: 700;
+  text-wrap: balance;
+}
+.welcome-help {
+  margin-top: 0.9em;
+}
+.side-title {
+  color: var(--accent);
+  font-weight: 700;
+}
+.side-title.quiet {
+  color: var(--fg);
+}
+.side-next {
+  display: grid;
+  text-decoration: none;
+}
+.side-next span {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+.side-next:hover span {
+  text-decoration-color: currentColor;
+}
+.tips li {
+  display: grid;
+  grid-template-columns: 3ch 1fr;
+  text-wrap: pretty;
+}
+
+@media (min-width: 52rem) {
+  .welcome {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+  .welcome-side {
+    border-top: 0;
+    border-left: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+    padding-top: 1.1em;
+  }
+}
+
+/* user prompt: what the human typed */
+
+.user-prompt {
+  display: grid;
+  grid-template-columns: var(--gutter) 1fr;
+  background: var(--prompt-bg);
+  padding: 0.35em 1ch 0.35em 0;
+  margin-inline: -1ch;
+  padding-left: 1ch;
+  border-radius: 4px;
+  font-family: var(--hand);
+}
+.prompt-sign {
+  color: var(--dim);
+  font-family: var(--mono);
+}
+
+/* assistant messages and tool calls */
+
+.msg {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  align-items: start;
+}
+.msg-body {
+  min-width: 0;
+}
+.prose {
+  max-width: 74ch;
+}
+.prose > * + * {
+  margin-top: 0.9em;
+}
+.dash-list li {
+  display: grid;
+  grid-template-columns: 2ch 1fr;
+}
+.dash-list li::before {
+  content: '-';
+  color: var(--dim);
+}
+.next-line a {
+  color: var(--accent);
+}
+
+.tool-call .path {
+  color: var(--dim);
+  overflow-wrap: anywhere;
+}
+.unit {
+  white-space: nowrap;
+}
+.result {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  align-items: start;
+  margin-top: 0.1em;
+}
+.result-body {
+  min-width: 0;
+}
+.result-line {
+  overflow-wrap: anywhere;
+}
+.note {
+  margin-top: 0.5em;
+}
+
+/* diff */
+
+.diff {
+  margin-top: 0.5em;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.diff-row {
+  display: grid;
+  grid-template-columns: 4ch 2ch minmax(0, 1fr);
+  padding-right: 1ch;
+}
+.diff-row .ln {
+  text-align: right;
+  padding-right: 1ch;
+  color: var(--dim);
+}
+.diff-row .code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.diff-row.ctx .code {
+  color: var(--dim);
+}
+.diff-row.add {
+  background: var(--add-bg);
+  color: var(--add-fg);
+}
+.diff-row.del {
+  background: var(--del-bg);
+  color: var(--del-fg);
+}
+.diff-row.add .ln,
+.diff-row.del .ln {
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* sessions */
+
+.sessions {
+  margin-top: 0.4em;
+  margin-left: -1ch;
+}
+.row {
+  display: grid;
+  grid-template-columns: 2.4ch 3.2ch minmax(0, 1fr) auto;
+  grid-template-areas:
+    'check num title date'
+    '.     .   hint  hint';
+  column-gap: 0;
+  width: 100%;
+  padding: 0.2em 1ch;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+.row:hover {
+  background: var(--hover);
+}
+.check {
+  grid-area: check;
+  color: var(--dim);
+}
+.num {
+  grid-area: num;
+  color: var(--dim);
+}
+.title {
+  grid-area: title;
+  text-wrap: pretty;
+  padding-right: 2ch;
+}
+.date {
+  grid-area: date;
+  white-space: nowrap;
+  color: var(--dim);
+}
+.hint {
+  grid-area: hint;
+  font-size: 0.92em;
+}
+.hint:empty {
+  display: none;
+}
+.row[aria-expanded='true'] .hint {
+  display: none;
+}
+
+.session[data-status='done'] .g-check-x {
+  display: inline;
+}
+.session[data-status='done'] .title {
+  color: var(--dim);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklab, var(--dim) 60%, transparent);
+}
+.session[data-status='next'] .check,
+.session[data-status='next'] .date {
+  color: var(--accent);
+}
+.session[data-status='next'] .g-check-fill {
+  display: inline;
+}
+.session[data-status='next'] .title {
+  font-weight: 700;
+}
+.session[data-status='next'] .title::after {
+  content: '  ← next';
+  content: '  ← next' / '';
+  font-weight: 400;
+  color: var(--accent);
+  white-space: pre;
+}
+
+.details {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.32s var(--ease-out);
+}
+/* Without JS every session stays expanded; with JS only opened ones do. */
+.js .session:not([data-open]) .details {
+  grid-template-rows: 0fr;
+}
+html:not(.js) .hint,
+html:not(.js) .input,
+html:not(.js) .permission .keys {
+  display: none;
+}
+html:not(.js) .row {
+  cursor: default;
+}
+.details-inner {
+  overflow: hidden;
+  min-height: 0;
+  padding-left: calc(5.6ch + 1ch);
+}
+.details-inner > .result {
+  padding-bottom: 0.7em;
+}
+.details-inner > .nested {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  padding-top: 0.35em;
+}
+.kv {
+  display: grid;
+  grid-template-columns: 7ch minmax(0, 1fr);
+  column-gap: 1ch;
+  row-gap: 0.15em;
+  max-width: 70ch;
+}
+.kv dt {
+  color: var(--dim);
+}
+.kv dd {
+  text-wrap: pretty;
+}
+.agenda li {
+  display: grid;
+  grid-template-columns: 2ch 1fr;
+}
+.agenda li::before {
+  content: '·';
+  color: var(--dim);
+}
+.share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em 1.5ch;
+}
+.share-link {
+  color: var(--accent);
+}
+.copy {
+  color: var(--dim);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0 0.8ch;
+  font-size: 0.92em;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+.copy:hover {
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+/* who runs it */
+
+.owners {
+  display: grid;
+  gap: 0.1em;
+}
+.owner {
+  display: grid;
+  grid-template-columns: minmax(0, 22ch) minmax(0, 1fr);
+  column-gap: 2ch;
+}
+
+/* log: output of answered prompts and typed commands */
+
+.log:empty {
+  display: none;
+}
+.log > * + * {
+  margin-top: var(--gap);
+}
+.echo {
+  font-family: var(--hand);
+}
+
+/* permission prompt */
+
+.permission {
+  border: 1.5px solid var(--accent);
+  border-radius: 10px;
+  padding: 1em 2ch 1.1em;
+  scroll-margin-top: 1.5rem;
+}
+.permission:focus {
+  outline: none;
+}
+.permission-q {
+  font-weight: 700;
+  color: var(--fg);
+}
+.options {
+  margin: 0.8em 0 0.6em -1ch;
+}
+.opt {
+  display: grid;
+  grid-template-columns: 2.2ch 3ch minmax(0, 1fr);
+  align-items: start;
+  width: 100%;
+  padding: 0.25em 1ch;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--fg);
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+.opt .g-pointer {
+  visibility: hidden;
+  margin-top: calc((1lh - 1em) / 2);
+}
+.opt-n {
+  color: var(--dim);
+}
+.opt[data-active] {
+  color: var(--accent);
+}
+.opt[data-active] .g-pointer {
+  visibility: visible;
+}
+.opt[data-active] .opt-n {
+  color: var(--accent);
+}
+.opt:hover {
+  background: var(--hover);
+}
+.opt:focus-visible {
+  outline-offset: 0;
+}
+.keys {
+  font-size: 0.92em;
+}
+
+/* input box */
+
+.input {
+  position: relative;
+}
+.input-box {
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(0, 1fr);
+  align-items: center;
+  border: 1.5px solid var(--rule);
+  border-radius: 10px;
+  padding: 0.55em 2ch;
+  transition: border-color 0.2s;
+}
+.input-box:focus-within {
+  border-color: var(--dim);
+}
+.input-box input {
+  width: 100%;
+  min-width: 0;
+  font: inherit;
+  font-family: var(--hand);
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: none;
+  caret-color: var(--accent);
+}
+.input-box input::placeholder {
+  color: var(--dim);
+  opacity: 1;
+}
+.menu {
+  margin-top: 0.4em;
+  padding: 0 2ch;
+}
+.menu li {
+  display: grid;
+  grid-template-columns: 11ch minmax(0, 1fr);
+  padding: 0.1em 1ch;
+  margin-inline: -1ch;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.menu-cmd {
+  color: var(--fg);
+}
+.menu li[aria-selected='true'] {
+  background: var(--hover);
+}
+.menu li[aria-selected='true'] .menu-cmd {
+  color: var(--accent);
+}
+.statusline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2ch;
+  padding: 0.35em 2ch 0;
+  font-size: 0.92em;
+}
+
+.foot {
+  padding-top: 1.5em;
+  font-size: 0.88em;
+  border-top: 1px dashed var(--rule);
+}
+.foot p + p {
+  margin-top: 0.3em;
+}
+
+/* touch devices see tap hints, keyboards see key hints */
+.touch-hint {
+  display: none;
+}
+@media (hover: none), (pointer: coarse) {
+  .kbd-hint {
+    display: none;
+  }
+  .touch-hint {
+    display: inline;
+  }
+}
+
+/* spinner line shown while the replay "thinks" */
+.spinner {
+  display: grid;
+  grid-template-columns: var(--gutter) 1fr;
+  color: var(--accent);
+}
+.spinner .spin-verb {
+  color: var(--accent);
+}
+.spinner .dim {
+  color: var(--dim);
+}
+
+.spin-glyph {
+  width: 0.55em;
+  height: 0.55em;
+  margin: calc((1lh - 0.55em) / 2) 0 0 0.12em;
+  background: var(--accent);
+  rotate: 45deg;
+  animation: spin-pulse 0.8s var(--ease-out) infinite;
+}
+@keyframes spin-pulse {
+  0% {
+    scale: 0.55;
+    opacity: 0.5;
+  }
+  60% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 0.55;
+    opacity: 0.5;
+    rotate: 135deg;
+  }
+}
+
+/* ---------- replay ---------- */
+
+/* Content stays visible without JS. With JS and the replay class, steps start hidden
+   and reveal in sequence; a CSS failsafe reveals everything if the script never runs. */
+.replay [data-step] {
+  opacity: 0;
+  translate: 0 0.35em;
+  animation: failsafe 0s 6s forwards;
+}
+.replay [data-step][data-shown] {
+  opacity: 1;
+  translate: 0 0;
+  animation: none;
+  transition:
+    opacity 0.45s var(--ease-out),
+    translate 0.45s var(--ease-out);
+}
+@keyframes failsafe {
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.replay .welcome[data-shown] .banner-ink rect {
+  animation: cell-in 0.5s var(--ease-out) backwards;
+  animation-delay: calc(var(--i) * 14ms);
+}
+@keyframes cell-in {
+  from {
+    opacity: 0;
+  }
+}
+.typed[data-typing]::after {
+  content: '';
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  vertical-align: -0.2em;
+  margin-left: 1px;
+  background: var(--accent);
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 34rem) {
+  :root {
+    --gap: 1.35em;
+    --gutter: 2ch;
+  }
+  .topbar-path {
+    display: none;
+  }
+  .welcome-main,
+  .welcome-side,
+  .permission {
+    padding-inline: 1.5ch;
+  }
+  .welcome-help {
+    display: none;
+  }
+  .input-box {
+    padding-inline: 1.5ch;
+  }
+  .row {
+    grid-template-columns: 2.4ch 3.2ch minmax(0, 1fr);
+    grid-template-areas:
+      'check num title'
+      '.     .   date'
+      '.     .   hint';
+  }
+  .title {
+    padding-right: 0;
+  }
+  .details-inner {
+    padding-left: 1ch;
+  }
+  .kv {
+    grid-template-columns: 6ch minmax(0, 1fr);
+  }
+  .owner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .owner dd {
+    padding-left: 2ch;
+  }
+  .menu li {
+    grid-template-columns: 10ch minmax(0, 1fr);
+  }
+  .statusline {
+    padding-inline: 1.5ch;
+  }
+}
+
+@media (max-width: 21.5rem) {
+  .kv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .kv dt {
+    margin-top: 0.35em;
+  }
+  .kv dt:first-child {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 48rem) {
+  .topbar,
+  .term {
+    padding-inline: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* during the replay, a message's dot waits for its first line */
+.replay .msg:has(> .msg-body > [data-step]:first-child:not([data-shown])) > .g-dot {
+  opacity: 0;
+}

@@ -1,0 +1,162 @@
+---
+import Glyph from './Glyph.astro';
+import { slugify, type Semester } from '../lib/sessions';
+
+interface Props {
+  semester: Semester;
+  id?: string;
+}
+const { semester, id } = Astro.props;
+
+// Break opportunities after "/" and "-" so long paths wrap at word joints, not mid-word.
+const wrapPath = (path: string) => path.replace(/([/-])/g, '$1<wbr>');
+
+const statusLabel = { done: 'done', next: 'next session', upcoming: 'upcoming' } as const;
+
+function detailLines(s: Semester['sessions'][number]) {
+  // Count the lines the expanded result shows, for the "+N lines" hint.
+  return 3 + [s.summary, s.bring, s.level, s.prerequisites, s.host].filter(Boolean).length + (s.agenda?.length ?? 0);
+}
+---
+
+<section class="msg tool" id={id} aria-label={`${semester.label} sessions`} data-semester={semester.key}>
+  <Glyph name="dot" class="ok" />
+  <div class="msg-body">
+    <h2 class="tool-call"><b>Read</b>(<span class="path" set:html={wrapPath(semester.file)} />)</h2>
+    <div class="result">
+      <Glyph name="elbow" />
+      <div class="result-body">
+        <p class="dim result-line">{semester.label} · {semester.sessions.length} sessions</p>
+        <ol class="sessions" role="list">
+          {
+            semester.sessions.map((s) => (
+              <li
+                class="session"
+                id={s.id}
+                data-status={s.status}
+                data-start={s.startISO}
+                data-end={s.endISO}
+                data-open={s.status === 'next' ? '' : undefined}
+              >
+                <button
+                  type="button"
+                  class="row"
+                  aria-expanded={s.status === 'next' ? 'true' : 'false'}
+                  aria-controls={`${s.id}-details`}
+                >
+                  <span class="check">
+                    <Glyph name="todo" />
+                  </span>
+                  <span class="num">{s.number}</span>
+                  <span class="title">
+                    {s.title}
+                    <span class="sr-only status-text">({statusLabel[s.status]})</span>
+                  </span>
+                  <span class="date">
+                    <time datetime={s.startISO}>{s.shortDate}</time>
+                  </span>
+                  <span class="hint dim" aria-hidden="true">
+                    {s.hasDetails ? (
+                      <>
+                        … +{detailLines(s)} lines <span class="kbd-hint">(ctrl+o to expand)</span>
+                        <span class="touch-hint">(tap to expand)</span>
+                      </>
+                    ) : null}
+                  </span>
+                </button>
+                <div class="details" id={`${s.id}-details`} role="region" aria-label={`${s.title} details`}>
+                  <div class="details-inner">
+                    <p class="tool-call nested">
+                      <Glyph name="dot" class="ok" />
+                      <span>
+                        <b>Read</b>(<span class="path" set:html={wrapPath(`sessions/${s.number}-${slugify(s.title)}.md`)} />)
+                      </span>
+                    </p>
+                    <div class="result">
+                      <Glyph name="elbow" />
+                      <dl class="kv">
+                        <dt>when</dt>
+                        <dd>
+                          {s.longDate} · {s.timeRange}
+                        </dd>
+                        <dt>where</dt>
+                        <dd>HTL Leonding · {s.room ? `room ${s.room}` : 'room to be announced'}</dd>
+                        {s.summary && (
+                          <>
+                            <dt>what</dt>
+                            <dd>{s.summary}</dd>
+                          </>
+                        )}
+                        {s.agenda && (
+                          <>
+                            <dt>agenda</dt>
+                            <dd>
+                              <ul class="agenda" role="list">
+                                {s.agenda.map((a) => (
+                                  <li>{a}</li>
+                                ))}
+                              </ul>
+                            </dd>
+                          </>
+                        )}
+                        {s.bring && (
+                          <>
+                            <dt>bring</dt>
+                            <dd>{s.bring}</dd>
+                          </>
+                        )}
+                        {s.level && (
+                          <>
+                            <dt>level</dt>
+                            <dd>{s.level}</dd>
+                          </>
+                        )}
+                        {s.prerequisites && (
+                          <>
+                            <dt>needs</dt>
+                            <dd>{s.prerequisites}</dd>
+                          </>
+                        )}
+                        {s.host && (
+                          <>
+                            <dt>host</dt>
+                            <dd>{s.host}</dd>
+                          </>
+                        )}
+                        {s.links?.map((l) => (
+                          <>
+                            <dt>link</dt>
+                            <dd>
+                              <a href={l.url}>{l.label}</a>
+                            </dd>
+                          </>
+                        ))}
+                        {!s.hasDetails && (
+                          <>
+                            <dt>topic</dt>
+                            <dd class="dim pending-note">Topic details follow.</dd>
+                          </>
+                        )}
+                        <dt>share</dt>
+                        <dd class="share">
+                          <a class="share-link" href={`#${s.id}`}>
+                            #{s.id}
+                          </a>
+                          <button type="button" class="copy" data-copy={s.id}>
+                            copy link
+                          </button>
+                          <span class="copy-status dim" role="status" />
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+        {semester.note && <p class="dim result-line note">{semester.note}</p>}
+      </div>
+    </div>
+  </div>
+</section>
