@@ -1,0 +1,448 @@
+/* Kiosk slides: one 1920×1080 stage in the site's terminal world, scaled to fit the screen.
+   Each slide is one turn of the session; the footer is the status line, with a sign-up code always in reach. */
+
+.kiosk-body {
+  overflow: hidden;
+  font-size: 40px;
+  line-height: 1.45;
+}
+
+.kiosk {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+}
+.kiosk[data-idle] {
+  cursor: none;
+}
+
+.stage {
+  box-sizing: border-box;
+  width: 1920px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding: 56px 112px 36px;
+}
+.kiosk-js .stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1080px;
+  translate: -50% -50%;
+  scale: var(--fit, 1);
+}
+
+.deck {
+  position: relative;
+  min-height: 0;
+}
+
+/* ---------- slides ---------- */
+
+.slide {
+  --gutter: 2.4ch;
+}
+.kiosk-js .slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 48px;
+  transition:
+    opacity 0.45s var(--ease-out),
+    translate 0.6s var(--ease-out),
+    visibility 0s 0.6s;
+}
+.kiosk-js .slide[data-current] {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+  transition:
+    opacity 0.5s var(--ease-out) 0.3s,
+    translate 0.8s var(--ease-out) 0.3s,
+    visibility 0s;
+}
+/* the previous turn scrolls up and away, like terminal output */
+.kiosk-js .slide[data-leaving] {
+  translate: 0 -64px;
+}
+
+.kiosk-js .slide [data-step]:not([data-shown]) {
+  opacity: 0;
+  translate: 0 0.3em;
+}
+.kiosk-js .slide [data-step][data-shown] {
+  transition:
+    opacity 0.5s var(--ease-out),
+    translate 0.5s var(--ease-out);
+}
+
+.k-big {
+  font-size: 46px;
+}
+.k-tight {
+  font-size: 34px;
+}
+
+.k-prompt {
+  margin-inline: -0.6em;
+  padding: 0.3em 0.6em;
+  border-radius: 10px;
+}
+.k-spin {
+  margin-top: 1.1em;
+}
+.k-spin[hidden] {
+  display: none;
+}
+.k-answer {
+  margin-top: 1.1em;
+}
+.k-follow {
+  margin-top: 0.9em;
+}
+.k-prose {
+  max-width: 68ch;
+}
+.k-prose > * + * {
+  margin-top: 0.8em;
+}
+.k-prose .dash-list {
+  margin-top: 0.4em;
+}
+.k-prose .dash-list li + li {
+  margin-top: 0.15em;
+}
+
+/* welcome */
+
+.slide:has(> .k-welcome) {
+  display: grid;
+  align-content: center;
+}
+.k-welcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  border: 3px solid var(--accent);
+  border-radius: 22px;
+}
+.k-welcome-main,
+.k-welcome-side {
+  padding: 48px 56px 52px;
+}
+.k-welcome-side {
+  display: grid;
+  align-content: center;
+  gap: 0.6em;
+  border-left: 2px solid color-mix(in oklab, var(--accent) 45%, transparent);
+}
+.k-welcome-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8ch;
+}
+.k-banner {
+  width: 860px;
+  max-width: 100%;
+  margin: 1.1em 0 0.9em;
+}
+.k-welcome-full {
+  font-size: 44px;
+  font-weight: 700;
+}
+.k-next {
+  display: grid;
+  gap: 0.15em;
+  font-size: 44px;
+  line-height: 1.3;
+}
+.k-next b {
+  color: var(--accent);
+}
+
+/* todos tick off one by one */
+
+.k-todos {
+  margin-top: 0.35em;
+}
+.k-todos li + li {
+  margin-top: 0.2em;
+}
+.k-todos li[data-state='active'] .check {
+  color: var(--accent);
+}
+.k-todos li[data-state='active'] .g-check-fill {
+  display: inline;
+}
+.k-todos li[data-state='active'] > span:last-child {
+  font-weight: 700;
+}
+.k-todos li[data-state='done'] .check {
+  color: var(--ok);
+}
+.k-todos li[data-state='done'] .g-check-x {
+  display: inline;
+}
+
+/* diff */
+
+.k-diff {
+  margin-top: 0.6em;
+  border-radius: 8px;
+  max-width: 34ch;
+}
+.k-diff .diff-row {
+  padding-block: 0.08em;
+}
+
+/* tips */
+
+.k-tips li {
+  grid-template-columns: 2.6ch 1fr;
+}
+.k-tips li + li {
+  margin-top: 0.45em;
+}
+
+/* the school report statement */
+
+.k-statement {
+  font-size: 64px;
+  line-height: 1.3;
+  margin-top: 1.4em;
+}
+.k-statement p {
+  max-width: 40ch;
+  text-wrap: balance;
+}
+.k-statement .accent {
+  font-weight: 700;
+}
+.k-statement p.k-statement-sub {
+  max-width: none;
+  text-wrap: pretty;
+  margin-top: 1.1em;
+  font-size: 40px;
+  color: var(--dim);
+}
+
+/* split slides: content left, permission prompt with QR right */
+
+.k-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 640px;
+  column-gap: 96px;
+}
+.k-split-main {
+  min-width: 0;
+}
+.k-logo {
+  width: 520px;
+  margin: 0.8em 0 0.7em;
+}
+.k-logo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.k-date {
+  font-size: 46px;
+  font-weight: 700;
+}
+.k-timeline,
+.k-when {
+  margin-top: 0.4em;
+  font-size: 40px;
+  line-height: 1.3;
+}
+.k-timeline {
+  --tl-gap: 0.4em;
+}
+
+.k-permission {
+  align-self: center;
+  border: 3px solid var(--accent);
+  border-radius: 22px;
+  padding: 30px 40px 26px;
+  font-size: 38px;
+  line-height: 1.35;
+}
+.k-q {
+  font-size: 44px;
+  font-weight: 700;
+}
+.k-q-sub {
+  margin-top: 0.3em;
+  font-size: 30px;
+}
+.k-opt {
+  display: grid;
+  grid-template-columns: 1.2em 2.4ch 1fr;
+  margin-top: 0.55em;
+  color: var(--accent);
+}
+.k-opt .g-pointer {
+  margin-top: calc((1lh - 1em) / 2);
+}
+.k-qr {
+  width: 360px;
+  margin: 24px auto 0;
+}
+.k-qr svg,
+.k-foot-qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.k-url {
+  margin-top: 18px;
+  font-size: 24px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* sessions, both semesters side by side */
+
+.k-semesters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 80px;
+}
+.k-sessions {
+  margin-top: 0.35em;
+}
+.k-session {
+  display: grid;
+  grid-template-columns: 2.4ch 11ch 6.5ch minmax(0, 1fr);
+  line-height: 1.5;
+}
+.k-session .check {
+  grid-area: auto;
+}
+.k-session .check,
+.k-s-time {
+  color: var(--dim);
+}
+.k-session[data-status='done'] {
+  color: var(--dim);
+}
+.k-session[data-status='done'] .g-check-x {
+  display: inline;
+}
+.k-session[data-status='done'] .k-s-title {
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklab, var(--dim) 60%, transparent);
+}
+.k-session[data-status='next'] .check,
+.k-session[data-status='next'] .k-s-date,
+.k-session[data-status='next'] .k-s-time {
+  color: var(--accent);
+}
+.k-session[data-status='next'] .g-check-fill {
+  display: inline;
+}
+.k-session[data-status='next'] .k-s-title {
+  font-weight: 700;
+}
+.k-session[data-status='next'] .k-s-title::after {
+  content: '  ← next';
+  content: '  ← next' / '';
+  font-weight: 400;
+  color: var(--accent);
+  white-space: pre;
+}
+.k-note {
+  margin-top: 1.2em;
+}
+
+/* who runs it */
+
+.k-owners {
+  display: grid;
+  gap: 0.2em;
+  margin-top: 0.2em;
+}
+.k-owners dd {
+  margin-top: -0.1em;
+}
+
+/* ---------- status line ---------- */
+
+.k-foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  column-gap: 64px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--rule);
+  font-size: 26px;
+  line-height: 1.4;
+}
+.k-brand {
+  display: grid;
+}
+.k-brand-name {
+  display: flex;
+  align-items: center;
+  gap: 0.6ch;
+}
+.k-status {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.k-progress {
+  display: flex;
+  gap: 10px;
+  font-size: 30px;
+  color: var(--dim);
+}
+.k-progress li {
+  display: flex;
+}
+.k-progress li[data-state='done'] .g-check-x {
+  display: inline;
+}
+.k-progress li[data-state='current'] {
+  color: var(--accent);
+}
+.k-progress li[data-state='current'] .g-check-fill {
+  display: inline;
+}
+.k-paused {
+  color: var(--accent);
+}
+.k-paused[hidden] {
+  display: none;
+}
+.k-foot-qr {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+.k-foot-qr svg {
+  width: 150px;
+  border-radius: 8px;
+}
+.k-foot-qr figcaption {
+  color: var(--accent);
+  font-weight: 700;
+}
+/* slides with their own code hide this one, so only one code is ever in view */
+.kiosk[data-own-qr] .k-foot-qr {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiosk-js .slide,
+  .kiosk-js .slide[data-current],
+  .kiosk-js .slide[data-leaving],
+  .kiosk-js .slide [data-step] {
+    translate: none;
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+}

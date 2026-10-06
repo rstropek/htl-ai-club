@@ -215,7 +215,7 @@ Flat. There are no box shadows anywhere. Depth is conveyed the way a terminal co
 
 ## Shapes
 
-Corners come in four steps tied to role: 3px for the focus ring, 4px for anything that is a line of text with a wash (session rows, options, prompt band, diff block, menu items), 6px for command keys, 10px for the three framed boxes (welcome, permission, input). Frames are single strokes: 1.5px for boxes, 1px for keys, chips and internal dividers, dashed 1px for the footer rule.
+Corners come in four steps tied to role: 3px for the focus ring, 4px for anything that is a line of text with a wash (session rows, options, prompt band, diff block, menu items), 6px for command keys, 10px for the three framed boxes (welcome, permission, input). Frames are single strokes: 1.5px for boxes, 1px for keys, chips and internal dividers, dashed 1px for the footer rule. Poster-scale surfaces (the promo image and the kiosk slides, built on a fixed 1920×1080 stage) scale the same steps with their type: 22px and 3px strokes for framed boxes, 8–14px for QR tiles and text bands, a dashed 2px status-line rule.
 
 Glyphs are drawn, not typed: the message dot is a 0.56em circle centred on the first line; the result elbow is a two-sided 1.5px border; checkboxes are a 12-unit SVG square that shows a cross when done and a filled inner square when next; the pointer is a stroked chevron; the club mark is a filled diamond; the spinner is a pink rotated square that pulses. The banner is crisp-edged cells. Plain text characters that Monaspace itself renders (`-`, `·`, `*`, `>`, `←`, `…`) stay text.
 
@@ -244,6 +244,9 @@ The session plan is an `Update Todos` tool call: a dim caption ("How every sessi
 
 Each session is a full-width button row: checkbox, dim number, title ("Club meeting" unless the event has a name), date with start time in full ink, and a dim `… +N lines (ctrl+o to expand)` hint (`tap to expand` on touch) shown only on the first collapsed row of each list, so the gesture is taught once instead of repeated. Done sessions are dimmed and struck through with a cross in the box; the next session gets a filled pink box, bold title, pink date and a pink `← next` tag, and opens by default. Rows take the hover wash at 4px. Expanding animates `grid-template-rows` over 0.32s and reveals a nested `Read(sessions/…md)` call with a key/value result: `when` (date and time range) and `where` (the place, HTL Leonding unless set). Optional detail rows (what, agenda, bring, level, needs, host, link) appear only when the data has them; currently only dates and times are announced.
 
+### Timeline
+The run of a day (the bus to an event elsewhere, start, end, return), drawn like `git log --graph`: right-aligned dim times, so an approximate `~14:00` hangs its tilde into the margin; a node column with a 2px rule joining the dots; then what happens. Steps before the start are ink dots, the start is the pink dot with pink bold time and label, and steps after it are hollow dim rings with dim labels. It shows in a session's `plan` detail row, on the promo image and on the kiosk's CCC slide.
+
 ### Diff
 Line-numbered rows in a 4px-rounded block: context in dim ink, removed lines on the red wash, added lines on the green wash, numbers at 80% opacity within coloured rows.
 
@@ -255,6 +258,9 @@ A 10px-rounded box with a 1.5px rule border that darkens to dim ink on focus; Ra
 
 ### Replay motion
 One authored sequence, once per visit (session storage), skipped when the URL has a hash. The welcome box reveals with its banner cells fading in on a 14ms diagonal stagger; the prompt types at 30ms per character behind a pink block cursor; a pink spinner line shows a verb with `(esc to skip)` for about 0.8s; then each step fades and rises 0.35em over 0.45s on `cubic-bezier(0.16, 1, 0.3, 1)`. Any key, pointer, wheel or touch finishes it instantly. It is never started under `prefers-reduced-motion`, which also collapses all transitions; a CSS failsafe reveals every step after 6s if the script never runs.
+
+### Kiosk slides
+`/kiosk/`, not linked from the homepage, runs the homepage's story as a self-advancing loop on a 1920×1080 stage scaled to the screen: welcome, what the club is, how a session runs (todos tick off one by one: pink filled box while active, green cross when done), possible topics, getting started, the school report, the CCC while it is upcoming, all sessions, join. Each slide is one turn: the prompt types, the spinner shows for 0.9s, the answer streams. The outgoing turn scrolls up 64px as it fades and the next rises in. The footer is the status line: club name, one todo checkbox per slide as progress, and a "scan to join" code that hides on slides with their own code, so only one code is ever in view. Dark only, because the use scene is a stand screen.
 
 ## Do's and Don'ts
 

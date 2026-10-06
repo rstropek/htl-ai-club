@@ -1,0 +1,28 @@
+---
+// The run of a day, drawn like `git log --graph`: times, nodes on one line, and what happens.
+// Steps before the session's start are filled, the start is the accent, steps after it are hollow.
+interface Props {
+  steps: { time: string; label: string }[];
+  start: string;
+  class?: string;
+  [attr: string]: unknown;
+}
+const { steps, start, class: className, ...rest } = Astro.props;
+const key = steps.findIndex((s) => s.time === start);
+const phase = (i: number) => (key < 0 || i < key ? 'before' : i === key ? 'key' : 'after');
+---
+
+<ol class:list={['timeline', className]} role="list" {...rest}>
+  {
+    steps.map((s, i) => (
+      <li data-phase={phase(i)}>
+        <span class="tl-time">
+          {s.time.startsWith('~') && <span class="sr-only">around </span>}
+          <span aria-hidden={s.time.startsWith('~') ? 'true' : undefined}>{s.time.startsWith('~') ? '~' : ''}</span>{s.time.replace('~', '')}
+        </span>
+        <span class="tl-node" aria-hidden="true" />
+        <span class="tl-label">{s.label}</span>
+      </li>
+    ))
+  }
+</ol>

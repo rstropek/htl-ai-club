@@ -24,6 +24,11 @@ const session = z.object({
   prerequisites: z.string().optional(),
   host: z.string().optional(),
   links: z.array(z.object({ label: z.string(), url: z.url() })).optional(),
+  // Optional run of the day, such as the bus to an event elsewhere. The step at `start` is highlighted;
+  // a leading "~" marks an approximate time, such as "~14:00".
+  schedule: z
+    .array(z.object({ time: z.string().regex(/^~?\d{2}:\d{2}$/, 'use HH:MM or ~HH:MM'), label: z.string() }))
+    .optional(),
 });
 
 const semesters = defineCollection({

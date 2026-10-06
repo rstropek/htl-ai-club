@@ -13,6 +13,7 @@ import '../../styles/global.css';
 import '../../styles/promo.css';
 import Banner from '../../components/Banner.astro';
 import Glyph from '../../components/Glyph.astro';
+import Timeline from '../../components/Timeline.astro';
 import logoSource from '../../assets/promo/ccc-logo.svg?raw';
 import { site } from '../../data/site';
 import { getSemesters } from '../../lib/sessions';
@@ -48,12 +49,14 @@ const siteUrl = site.publicUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
         <h1 class="p-logo" set:html={logo} />
 
-        <dl class="p-facts">
-          <dt>when</dt>
-          <dd><b>{ccc.longDate}</b><span class="p-time">{ccc.timeRange}</span></dd>
-          <dt>where</dt>
-          <dd><b>{ccc.place}</b></dd>
-        </dl>
+        <p class="p-date">{ccc.longDate}</p>
+        {
+          ccc.schedule ? (
+            <Timeline steps={ccc.schedule} start={ccc.start} class="p-timeline" />
+          ) : (
+            <p class="p-when"><span class="accent">{ccc.timeRange}</span> · {ccc.place}</p>
+          )
+        }
       </div>
 
       <section class="p-permission" aria-labelledby="p-q">

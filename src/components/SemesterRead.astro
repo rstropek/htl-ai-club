@@ -1,5 +1,6 @@
 ---
 import Glyph from './Glyph.astro';
+import Timeline from './Timeline.astro';
 import { slugify, type Semester } from '../lib/sessions';
 
 interface Props {
@@ -19,7 +20,8 @@ function detailLines(s: Semester['sessions'][number]) {
     3 +
     [s.summary, s.bring, s.level, s.prerequisites, s.host].filter(Boolean).length +
     (s.agenda?.length ?? 0) +
-    (s.links?.length ?? 0)
+    (s.links?.length ?? 0) +
+    (s.schedule?.length ?? 0)
   );
 }
 ---
@@ -87,6 +89,14 @@ function detailLines(s: Semester['sessions'][number]) {
                           <span class="place">{s.place}</span>
                           {s.room && ` · room ${s.room}`}
                         </dd>
+                        {s.schedule && (
+                          <>
+                            <dt>plan</dt>
+                            <dd>
+                              <Timeline steps={s.schedule} start={s.start} />
+                            </dd>
+                          </>
+                        )}
                         {s.summary && (
                           <>
                             <dt>what</dt>

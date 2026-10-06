@@ -1034,3 +1034,65 @@ html:not(.js) .row {
 .replay .msg:has(> .msg-body > [data-step]:first-child:not([data-shown])) > .g-dot {
   opacity: 0;
 }
+
+/* ---------- timeline: the run of a day, like git log --graph ---------- */
+
+.timeline {
+  --tl-gap: 0.45em;
+  --tl-dot: 0.56em;
+}
+.timeline li {
+  display: grid;
+  grid-template-columns: 6.8ch 1.7em minmax(0, 1fr);
+  margin-left: -1ch;
+  align-items: start;
+}
+.timeline li + li {
+  margin-top: var(--tl-gap);
+}
+.tl-time {
+  color: var(--dim);
+  /* right-aligned, so an approximate "~14:00" hangs its tilde into the margin */
+  text-align: right;
+  padding-right: 0.8ch;
+}
+.tl-node {
+  position: relative;
+  align-self: stretch;
+}
+.tl-node::before {
+  content: '';
+  position: absolute;
+  left: 0.2em;
+  top: calc((1lh - var(--tl-dot)) / 2);
+  width: var(--tl-dot);
+  height: var(--tl-dot);
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--fg);
+}
+/* the line down to the next node */
+.timeline li:not(:last-child) .tl-node::after {
+  content: '';
+  position: absolute;
+  left: calc(0.2em + var(--tl-dot) / 2 - 1px);
+  top: calc((1lh + var(--tl-dot)) / 2 + 0.14em);
+  bottom: calc(-1 * var(--tl-gap) - (1lh - var(--tl-dot)) / 2 + 0.14em);
+  width: 2px;
+  background: var(--rule);
+}
+.timeline li[data-phase='key'] .tl-time,
+.timeline li[data-phase='key'] .tl-label {
+  color: var(--accent);
+  font-weight: 700;
+}
+.timeline li[data-phase='key'] .tl-node::before {
+  background: var(--accent);
+}
+.timeline li[data-phase='after'] .tl-label {
+  color: var(--dim);
+}
+.timeline li[data-phase='after'] .tl-node::before {
+  background: none;
+  border: 2px solid var(--dim);
+}

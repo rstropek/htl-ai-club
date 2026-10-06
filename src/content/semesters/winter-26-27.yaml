@@ -14,6 +14,15 @@ sessions:
     links:
       - label: CCC details and registration
         url: https://forms.cloud.microsoft/e/kdQtY5Cs7L
+    schedule:
+      - time: "09:00"
+        label: Bus leaves HTL Leonding
+      - time: "10:00"
+        label: Contest starts at JKU Linz
+      - time: "12:00"
+        label: Contest ends
+      - time: "~14:00"
+        label: Back at HTL Leonding
   - date: 2026-11-04
   - date: 2026-12-02
   - date: 2026-12-16

@@ -22,6 +22,8 @@ export interface Session {
   prerequisites?: string;
   host?: string;
   links?: { label: string; url: string }[];
+  schedule?: { time: string; label: string }[];
+  start: string;
   hasDetails: boolean;
   status: Status;
 }
@@ -93,7 +95,11 @@ export async function getSemesters(now = new Date()): Promise<Semester[]> {
           prerequisites: s.prerequisites,
           host: s.host,
           links: s.links,
-          hasDetails: Boolean(s.summary || s.agenda || s.bring || s.level || s.prerequisites || s.host || s.links),
+          schedule: s.schedule,
+          start,
+          hasDetails: Boolean(
+            s.summary || s.agenda || s.bring || s.level || s.prerequisites || s.host || s.links || s.schedule,
+          ),
           status: 'upcoming' as Status,
         };
       }),

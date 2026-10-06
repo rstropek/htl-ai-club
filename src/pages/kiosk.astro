@@ -1,0 +1,357 @@
+---
+// Self-advancing kiosk slides for presenting the club at a stand, such as the Club Convention Day.
+// One 1920×1080 stage, scaled to fit any screen. Not linked from the homepage.
+// Keys: → / PageDown next · ← / PageUp back · space pause · f fullscreen. Start at a slide with #3.
+import '@fontsource/monaspace-neon/400.css';
+import '@fontsource/monaspace-neon/700.css';
+import '@fontsource/monaspace-radon/400.css';
+import '../styles/global.css';
+import '../styles/kiosk.css';
+import Banner from '../components/Banner.astro';
+import Glyph from '../components/Glyph.astro';
+import Timeline from '../components/Timeline.astro';
+import logoSource from '../assets/promo/ccc-logo.svg?raw';
+import { site } from '../data/site';
+import { pitch, plan, topics, tips } from '../data/copy';
+import { getSemesters } from '../lib/sessions';
+import { qrPath } from '../lib/qr';
+
+const semesters = await getSemesters();
+const sessions = semesters.flatMap((s) => s.sessions);
+const next = sessions.find((s) => s.status === 'next');
+const ccc = sessions.find((s) => s.title.includes('Cloudflight'));
+const cccLink = ccc?.links?.[0]?.url;
+
+const bare = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const joinQr = qrPath(site.joinFormUrl);
+const cccQr = cccLink ? qrPath(cccLink) : null;
+const logo = logoSource
+  .replace(/<\?xml[^>]*>\s*/, '')
+  .replace('viewBox="0 0 650.62 296.64"', 'viewBox="49.97 56.77 550.68 184.32" role="img" aria-label="Cloudflight Coding Contest"');
+
+// Short row label for the session list: "Cloudflight Coding Contest (CCC)" becomes "CCC".
+const rowLabel = (title: string) => title.match(/\(([^)]+)\)$/)?.[1] ?? title;
+const startTime = (s: (typeof sessions)[number]) => s.timeRange.split('–')[0];
+const elsewhere = sessions.filter((s) => s.place !== site.school);
+
+const verbs = ['Reading the room', 'Checking the schedule', 'Swapping tricks', 'Warming up the agent'];
+const spin = (i: number) => `${verbs[i % verbs.length]}…`;
+
+const data = {
+  sessions: sessions.map((s) => ({
+    start: s.startISO,
+    end: s.endISO,
+    when: `${s.shortDate} · ${startTime(s)}`,
+    title: s.title,
+    place: s.place,
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#131215" />
+    <title>AI Club Kiosk</title>
+    <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} type="image/svg+xml" />
+    <script is:inline>
+      document.documentElement.classList.add('kiosk-js');
+    </script>
+  </head>
+  <body class="kiosk-body">
+    <div class="kiosk" data-kiosk>
+      <div class="stage" data-stage>
+        <div class="deck" data-deck>
+          <!-- 1 · welcome -->
+          <section class="slide" data-dur="9" aria-label="Welcome">
+            <div class="k-welcome" data-step>
+              <div class="k-welcome-main">
+                <p class="k-welcome-title"><Glyph name="mark" /><span>Welcome to the <b>AI Club</b>!</span></p>
+                <div class="k-banner"><Banner /></div>
+                <p class="k-welcome-full">{site.fullName}</p>
+                <p class="dim">A student club at {site.school}</p>
+              </div>
+              <div class="k-welcome-side">
+                <h2 class="side-title">Next session</h2>
+                <p class="k-next" data-next>
+                  {
+                    next ? (
+                      <>
+                        <b data-next-when>{next.shortDate} · {startTime(next)}</b>
+                        <span data-next-title>{next.title}</span>
+                        <span class="dim" data-next-place>{next.place}</span>
+                      </>
+                    ) : (
+                      <span class="dim">Dates for the next semester follow soon.</span>
+                    )
+                  }
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2 · what the club is -->
+          <section class="slide" data-dur="15" aria-label="What the club is">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>what is this club?</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(0)}</span></p>
+            <div class="msg k-answer">
+              <Glyph name="dot" />
+              <div class="msg-body k-prose">
+                <p data-step>
+                  <b>AI Club</b>, officially <b>{site.fullName}</b>, is a student club at {site.school} for everyone who
+                  wants to get better at coding with AI.
+                </p>
+                <p data-step>Every few weeks we meet to:</p>
+                <ul class="dash-list" role="list">
+                  {pitch.map((line) => <li data-step>{line}</li>)}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3 · how a session runs -->
+          <section class="slide k-big" data-dur="13" aria-label="How every session runs">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>how does a session run?</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(1)}</span></p>
+            <section class="msg tool k-answer" data-step>
+              <Glyph name="dot" class="ok" />
+              <div class="msg-body">
+                <h2 class="tool-call"><b>Update Todos</b></h2>
+                <div class="result">
+                  <Glyph name="elbow" />
+                  <div class="result-body">
+                    <p class="dim result-line">How every session runs</p>
+                    <ol class="todos k-todos" role="list">
+                      {
+                        plan.map((step) => (
+                          <li data-tick>
+                            <span class="check"><Glyph name="todo" /></span>
+                            <span>{step}</span>
+                          </li>
+                        ))
+                      }
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- 4 · possible topics -->
+          <section class="slide k-tight" data-dur="13" aria-label="Possible topics">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>what will we work on?</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(2)}</span></p>
+            <div class="msg k-answer" data-step>
+              <Glyph name="dot" />
+              <p class="msg-body">Possible topics, and what they replace:</p>
+            </div>
+            <section class="msg tool k-follow" data-step>
+              <Glyph name="dot" class="ok" />
+              <div class="msg-body">
+                <h2 class="tool-call"><b>Update</b>(<span class="path">~/wednesday-evenings.md</span>)</h2>
+                <div class="result">
+                  <Glyph name="elbow" />
+                  <div class="result-body">
+                    <p class="dim result-line">
+                      Updated <b class="fg">~/wednesday-evenings.md</b> with <b class="fg">{topics.length}</b> additions and <b class="fg">1</b> removal
+                    </p>
+                    <div class="diff k-diff">
+                      <div class="diff-row ctx"><span class="ln">1</span><span class="sg"></span><span class="code">## Wednesday, 17:30</span></div>
+                      <div class="diff-row del" data-step><span class="ln">2</span><span class="sg">-</span><span class="code">Doomscrolling alone at home</span></div>
+                      {
+                        topics.map((t, i) => (
+                          <div class="diff-row add" data-step data-wait="260">
+                            <span class="ln">{i + 2}</span>
+                            <span class="sg">+</span>
+                            <span class="code">{t}</span>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- 5 · getting started -->
+          <section class="slide k-big" data-dur="13" aria-label="Tips for getting started">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>what do I need to get started?</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(3)}</span></p>
+            <div class="msg k-answer">
+              <Glyph name="dot" />
+              <div class="msg-body k-prose">
+                <p data-step>Less than you think:</p>
+                <ol class="tips k-tips" role="list">
+                  {tips.map((tip, i) => <li data-step><span class="tip-n">{i + 1}.</span>{tip}</li>)}
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6 · school report -->
+          <section class="slide" data-dur="11" aria-label="It counts">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>does it count for anything?</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(1)}</span></p>
+            <div class="msg k-answer k-statement">
+              <Glyph name="dot" />
+              <div class="msg-body">
+                <p data-step>
+                  Yes. Attend at least half of the sessions and your participation goes on your{' '}
+                  <span class="accent">school report</span>.
+                </p>
+                <p class="k-statement-sub" data-step data-wait="900">It's open to all students, and to external guests.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7 · the CCC, shown until it is over -->
+          {
+            ccc && cccQr && (
+              <section class="slide k-split" data-dur="15" data-until={ccc.endISO} data-own-qr aria-label="Cloudflight Coding Contest">
+                <div class="k-split-main">
+                  <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>/next</span></p>
+                  <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(1)}</span></p>
+                  <div class="msg k-answer" data-step>
+                    <Glyph name="dot" />
+                    <p class="msg-body">Coming up: a coding contest.</p>
+                  </div>
+                  <h2 class="k-logo" data-step set:html={logo} />
+                  <p class="k-date" data-step>{ccc.longDate}</p>
+                  {ccc.schedule ? (
+                    <Timeline steps={ccc.schedule} start={ccc.start} class="k-timeline" data-step />
+                  ) : (
+                    <p class="k-when" data-step><span class="accent">{ccc.timeRange}</span> · {ccc.place}</p>
+                  )}
+                </div>
+                <section class="k-permission" data-step data-wait="500" aria-labelledby="k-ccc-q">
+                  <h3 id="k-ccc-q" class="k-q">Want to take part?</h3>
+                  <p class="k-opt"><Glyph name="pointer" /><span>1.</span><span>Scan for details and registration</span></p>
+                  <figure class="k-qr">
+                    <svg viewBox={`0 0 ${cccQr.view} ${cccQr.view}`} shape-rendering="crispEdges" role="img" aria-label="QR code to the CCC details and registration form">
+                      <rect class="qr-paper" width={cccQr.view} height={cccQr.view} />
+                      <path class="qr-ink" d={cccQr.d} />
+                    </svg>
+                  </figure>
+                  <p class="k-url">{bare(cccLink!)}</p>
+                </section>
+              </section>
+            )
+          }
+
+          <!-- 8 · all sessions -->
+          <section class="slide k-tight" data-dur="15" aria-label="All sessions">
+            <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>/sessions</span></p>
+            <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(1)}</span></p>
+            <div class="k-semesters">
+              {
+                semesters.map((semester, si) => (
+                  <section class="msg tool k-answer" data-step data-wait={si ? '500' : undefined} aria-label={`${semester.label} sessions`}>
+                    <Glyph name="dot" class="ok" />
+                    <div class="msg-body">
+                      <h2 class="tool-call"><b>Read</b>(<span class="path">{semester.file}</span>)</h2>
+                      <div class="result">
+                        <Glyph name="elbow" />
+                        <div class="result-body">
+                          <p class="dim result-line">{semester.label} · {semester.sessions.length} sessions</p>
+                          <ol class="k-sessions" role="list">
+                            {semester.sessions.map((s) => (
+                              <li class="k-session" data-start={s.startISO} data-end={s.endISO} data-status={s.status}>
+                                <span class="check"><Glyph name="todo" /></span>
+                                <span class="k-s-date">{s.shortDate}</span>
+                                <span class="k-s-time">{startTime(s)}</span>
+                                <span class="k-s-title">{rowLabel(s.title)}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                ))
+              }
+            </div>
+            <p class="dim k-note" data-step data-wait="500">
+              Club meetings are at {site.school}, and most of them are hybrid.
+              {elsewhere.map((s) => ` The ${rowLabel(s.title)} is at ${s.place}.`)}
+            </p>
+          </section>
+
+          <!-- 9 · join -->
+          <section class="slide k-split" data-dur="17" data-own-qr aria-label="Join the AI Club">
+            <div class="k-split-main">
+              <p class="user-prompt k-prompt"><span class="prompt-sign" aria-hidden="true">&gt;</span><span class="typed" data-typed>/join</span></p>
+              <p class="spinner k-spin" data-spin hidden><span class="spin-glyph"></span><span class="spin-verb">{spin(0)}</span></p>
+              <div class="msg k-answer" data-step>
+                <Glyph name="dot" />
+                <p class="msg-body">Questions? Just ask us:</p>
+              </div>
+              <section class="msg tool k-follow" data-step>
+                <Glyph name="dot" class="ok" />
+                <div class="msg-body">
+                  <h2 class="tool-call"><b>Read</b>(<span class="path">CODEOWNERS</span>)</h2>
+                  <div class="result">
+                    <Glyph name="elbow" />
+                    <div class="result-body">
+                      <p class="dim result-line"># who runs the club</p>
+                      <dl class="k-owners">
+                        {
+                          site.people.map((p) => (
+                            <div>
+                              <dt><span class="dim" aria-hidden="true">* </span>{p.name}</dt>
+                              <dd class="dim"># {p.role}</dd>
+                            </div>
+                          ))
+                        }
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <section class="k-permission" data-step data-wait="500" aria-labelledby="k-join-q">
+              <h3 id="k-join-q" class="k-q">Join the AI Club?</h3>
+              <p class="dim k-q-sub">Sign-up takes a minute, through a Microsoft Form.</p>
+              <p class="k-opt"><Glyph name="pointer" /><span>1.</span><span>Yes, scan the code</span></p>
+              <figure class="k-qr">
+                <svg viewBox={`0 0 ${joinQr.view} ${joinQr.view}`} shape-rendering="crispEdges" role="img" aria-label="QR code to the sign-up form">
+                  <rect class="qr-paper" width={joinQr.view} height={joinQr.view} />
+                  <path class="qr-ink" d={joinQr.d} />
+                </svg>
+              </figure>
+              <p class="k-url">{bare(site.joinFormUrl)}</p>
+            </section>
+          </section>
+        </div>
+
+        <footer class="k-foot">
+          <p class="k-brand">
+            <span class="k-brand-name"><Glyph name="mark" /><b>AI Club</b> · {site.fullName}</span>
+            <span class="dim">a student club at {site.school}</span>
+            <span class="dim">{bare(site.publicUrl)}</span>
+          </p>
+          <div class="k-status">
+            <ol class="k-progress" role="list" data-progress aria-hidden="true"></ol>
+            <span class="k-paused" data-paused hidden>paused</span>
+          </div>
+          <figure class="k-foot-qr">
+            <figcaption>scan to join</figcaption>
+            <svg viewBox={`0 0 ${joinQr.view} ${joinQr.view}`} shape-rendering="crispEdges" role="img" aria-label="QR code to the sign-up form">
+              <rect class="qr-paper" width={joinQr.view} height={joinQr.view} />
+              <path class="qr-ink" d={joinQr.d} />
+            </svg>
+          </figure>
+        </footer>
+      </div>
+    </div>
+
+    <template data-progress-item><li><Glyph name="todo" /></li></template>
+    <script is:inline type="application/json" id="kiosk-data" set:html={JSON.stringify(data)} />
+    <script>
+      import '../scripts/kiosk';
+    </script>
+  </body>
+</html>

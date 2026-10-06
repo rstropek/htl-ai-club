@@ -9,6 +9,7 @@ import QrCode from '../components/QrCode.astro';
 import SemesterRead from '../components/SemesterRead.astro';
 import { site } from '../data/site';
 import { getSemesters } from '../lib/sessions';
+import { pitch, plan, topics, tips } from '../data/copy';
 
 const semesters = await getSemesters();
 const [current, ...later] = semesters;
@@ -16,20 +17,6 @@ const next = semesters.flatMap((s) => s.sessions).find((s) => s.status === 'next
 
 const description =
   'AI Club (Algorithmic Problem Solving with AI) is a student club at HTL Leonding. We learn AI coding tools, practice, and swap tricks, settings and agent skills.';
-const pitch = [
-  'learn the AI coding tools that matter right now',
-  'practice on real problems, hands on keyboards',
-  "discuss what's new, and what's just hype",
-  'swap what works: experiences, tricks, preferences, settings, agent skills',
-];
-const plan = [
-  'We pick a topic related to agentic coding',
-  'Introduce it for beginners, as a recap for semi-pros',
-  'Dive into specific details for pros',
-  'Try it hands-on in an example',
-];
-// Possible session topics, shown as lines added to the visitor's Wednesday evenings.
-const topics = ['Context management', 'Tool calling', 'Sandboxing', 'Agent skills', 'MCP servers', 'Subagents'];
 const commands = [
   { cmd: '/join', desc: site.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)' },
   { cmd: '/next', desc: 'show the next session' },
@@ -136,9 +123,7 @@ const commands = [
           <div class="side-block">
             <h2 class="side-title quiet">Tips for getting started</h2>
             <ol class="tips" role="list">
-              <li><span class="tip-n">1.</span> Bring a laptop. No coding agent of your own? Use Novedu, the school's free one.</li>
-              <li><span class="tip-n">2.</span> No experience needed. Curiosity is.</li>
-              <li><span class="tip-n">3.</span> Most meetings are hybrid, so you can also join from home.</li>
+              {tips.map((tip, i) => <li><span class="tip-n">{i + 1}.</span> {tip}</li>)}
             </ol>
           </div>
         </div>
