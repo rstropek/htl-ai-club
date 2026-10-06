@@ -123,6 +123,15 @@ const commands = [
                 <p class="dim">Dates for the next semester follow soon.</p>
               )
             }
+            {
+              next?.links?.[0] && (
+                <p class="side-link">
+                  <a href={next.links[0].url} target="_blank" rel="noopener">
+                    {next.links[0].label}
+                  </a>
+                </p>
+              )
+            }
           </div>
           <div class="side-block">
             <h2 class="side-title quiet">Tips for getting started</h2>

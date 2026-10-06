@@ -390,6 +390,12 @@ button {
 .side-next:hover span {
   text-decoration-color: currentColor;
 }
+.side-link {
+  margin-top: 0.35em;
+}
+.side-link a {
+  color: var(--accent);
+}
 .tips li {
   display: grid;
   grid-template-columns: 3ch 1fr;

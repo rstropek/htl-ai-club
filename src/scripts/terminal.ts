@@ -193,20 +193,33 @@ function updateNextLine() {
     if (line) line.textContent = 'Dates for the next semester follow soon.';
     const side = document.querySelector('.side-next');
     if (side) side.replaceWith(el('span', 'dim', 'Dates for the next semester follow soon.'));
+    document.querySelector('.side-link')?.remove();
     return;
   }
   const title = next.querySelector('.title')?.firstChild?.textContent?.trim() ?? '';
   const when = next.querySelector('.date time')?.textContent?.trim() ?? '';
-  const link = el('a');
-  link.href = `#${next.id}`;
-  link.append(el('b', '', when), ` · ${title}`);
-  line?.replaceChildren('Next up: ', link);
+  const nextAnchor = el('a');
+  nextAnchor.href = `#${next.id}`;
+  nextAnchor.append(el('b', '', when), ` · ${title}`);
+  line?.replaceChildren('Next up: ', nextAnchor);
 
   const side = document.querySelector<HTMLAnchorElement>('.side-next');
   if (side) {
     side.href = `#${next.id}`;
     const place = next.querySelector('.place')?.textContent?.trim() ?? '';
     side.replaceChildren(el('b', '', when), el('span', '', title), el('small', '', place));
+  }
+
+  // The next session's first link (e.g. a contest registration) sits under it in the welcome panel.
+  const sessionLink = next.querySelector<HTMLAnchorElement>('a.session-link');
+  let sideLink = document.querySelector<HTMLElement>('.side-link');
+  if (!sessionLink) sideLink?.remove();
+  else {
+    if (!sideLink) {
+      sideLink = el('p', 'side-link');
+      side?.closest('p')?.after(sideLink);
+    }
+    sideLink.replaceChildren(link(sessionLink.textContent?.trim() ?? '', sessionLink.href));
   }
 }
 

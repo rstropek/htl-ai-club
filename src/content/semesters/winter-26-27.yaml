@@ -11,6 +11,9 @@ sessions:
     start: "10:00"
     end: "12:00"
     place: JKU Linz
+    links:
+      - label: Register for the CCC
+        url: https://forms.cloud.microsoft/e/kdQtY5Cs7L
   - date: 2026-11-04
   - date: 2026-12-02
   - date: 2026-12-16

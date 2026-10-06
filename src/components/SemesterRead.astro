@@ -133,7 +133,9 @@ function detailLines(s: Semester['sessions'][number]) {
                           <>
                             <dt>link</dt>
                             <dd>
-                              <a href={l.url}>{l.label}</a>
+                              <a class="session-link" href={l.url} target="_blank" rel="noopener">
+                                {l.label}
+                              </a>
                             </dd>
                           </>
                         ))}
