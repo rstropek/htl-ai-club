@@ -9,12 +9,14 @@ const session = z.object({
   date: z
     .union([z.date(), z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'use YYYY-MM-DD')])
     .transform((d) => (typeof d === 'string' ? d : d.toISOString().slice(0, 10))),
-  title: z.string(),
+  // Regular meetings need no title; they show as "Club meeting".
+  title: z.string().optional(),
   // Optional overrides of the semester defaults.
   start: time.optional(),
   end: time.optional(),
+  place: z.string().optional(),
   room: z.string().optional(),
-  // Optional details. A session without any of these shows "Topic details follow".
+  // Optional details, shown when a session is expanded. Currently unused: only dates and times are announced.
   summary: z.string().optional(),
   agenda: z.array(z.string()).optional(),
   bring: z.string().optional(),
@@ -32,7 +34,7 @@ const semesters = defineCollection({
     order: z.number(),
     // Short notice under the semester's list, e.g. "Topics may still change."
     note: z.string().optional(),
-    defaults: z.object({ start: time, end: time, room: z.string().optional() }),
+    defaults: z.object({ start: time, end: time, place: z.string().optional(), room: z.string().optional() }),
     sessions: z.array(session),
   }),
 });

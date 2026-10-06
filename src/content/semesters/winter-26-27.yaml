@@ -1,9 +1,7 @@
-# Winter semester 2026/27.
-# Dates and times are confirmed. Topics other than the CCC are placeholders.
+# Winter semester 2026/27. Only dates and times are announced.
 key: w26
 label: Winter 26/27
 order: 1
-note: Topics may still change.
 defaults:
   start: "17:30"
   end: "19:30"
@@ -12,35 +10,9 @@ sessions:
     title: CCC Cloudflight Coding Contest
     start: "10:00"
     end: "12:00"
-
+    place: JKU Linz
   - date: 2026-11-04
-    title: Prompting is debugging
-    summary: When the AI gets it wrong, treat it like a failing test. Shrink the problem, check your assumptions, add the missing context, try again.
-    agenda:
-      - 15 min demo
-      - 45 min hands-on with a set of deliberately broken prompts
-      - 30 min swap your tricks
-    bring: A laptop with the AI coding tool you use. Any tool is fine.
-    level: Everyone. No experience needed.
-    host: Benjamin Hartmann
-
   - date: 2026-12-02
-    title: "Agent skills: build one, share one"
-    summary: Skills package instructions and scripts that a coding agent loads when it needs them. We write one together, then everyone builds one for a task they repeat often.
-    agenda:
-      - 20 min what a skill is and when it pays off
-      - 50 min build your own
-      - 20 min show and swap
-    bring: A laptop and an idea for a task you keep explaining to your agent.
-    prerequisites: An AI coding agent installed, such as Claude Code, Codex or GitHub Copilot.
-    host: Rainer Stropek
-
   - date: 2026-12-16
-    title: Advent of Code with an AI pair
-    summary: Solve Advent of Code puzzles with an AI pair and compare strategies.
-
   - date: 2027-01-13
-    title: Settings swap
-
   - date: 2027-02-03
-    title: Semester retro

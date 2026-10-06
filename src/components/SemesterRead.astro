@@ -14,8 +14,13 @@ const wrapPath = (path: string) => path.replace(/([/-])/g, '$1<wbr>');
 const statusLabel = { done: 'done', next: 'next session', upcoming: 'upcoming' } as const;
 
 function detailLines(s: Semester['sessions'][number]) {
-  // Count the lines the expanded result shows, for the "+N lines" hint.
-  return 3 + [s.summary, s.bring, s.level, s.prerequisites, s.host].filter(Boolean).length + (s.agenda?.length ?? 0);
+  // Count the lines the expanded result shows (Read call, when, where, optional details) for the "+N lines" hint.
+  return (
+    3 +
+    [s.summary, s.bring, s.level, s.prerequisites, s.host].filter(Boolean).length +
+    (s.agenda?.length ?? 0) +
+    (s.links?.length ?? 0)
+  );
 }
 ---
 
@@ -53,15 +58,13 @@ function detailLines(s: Semester['sessions'][number]) {
                     <span class="sr-only status-text">({statusLabel[s.status]})</span>
                   </span>
                   <span class="date">
-                    <time datetime={s.startISO}>{s.shortDate}</time>
+                    <time datetime={s.startISO}>
+                      {s.shortDate} · {s.timeRange.split('–')[0]}
+                    </time>
                   </span>
                   <span class="hint dim" aria-hidden="true">
-                    {s.hasDetails ? (
-                      <>
-                        … +{detailLines(s)} lines <span class="kbd-hint">(ctrl+o to expand)</span>
-                        <span class="touch-hint">(tap to expand)</span>
-                      </>
-                    ) : null}
+                    … +{detailLines(s)} lines <span class="kbd-hint">(ctrl+o to expand)</span>
+                    <span class="touch-hint">(tap to expand)</span>
                   </span>
                 </button>
                 <div class="details" id={`${s.id}-details`} role="region" aria-label={`${s.title} details`}>
@@ -77,10 +80,13 @@ function detailLines(s: Semester['sessions'][number]) {
                       <dl class="kv">
                         <dt>when</dt>
                         <dd>
-                          {s.longDate} · {s.timeRange}
+                          <span class="unit">{s.longDate}</span> · <span class="unit">{s.timeRange}</span>
                         </dd>
                         <dt>where</dt>
-                        <dd>HTL Leonding · {s.room ? `room ${s.room}` : 'room to be announced'}</dd>
+                        <dd>
+                          {s.place}
+                          {s.room && ` · room ${s.room}`}
+                        </dd>
                         {s.summary && (
                           <>
                             <dt>what</dt>
@@ -131,22 +137,6 @@ function detailLines(s: Semester['sessions'][number]) {
                             </dd>
                           </>
                         ))}
-                        {!s.hasDetails && (
-                          <>
-                            <dt>topic</dt>
-                            <dd class="dim pending-note">Topic details follow.</dd>
-                          </>
-                        )}
-                        <dt>share</dt>
-                        <dd class="share">
-                          <a class="share-link" href={`#${s.id}`}>
-                            #{s.id}
-                          </a>
-                          <button type="button" class="copy" data-copy={s.id}>
-                            copy link
-                          </button>
-                          <span class="copy-status dim" role="status" />
-                        </dd>
                       </dl>
                     </div>
                   </div>

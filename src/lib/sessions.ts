@@ -13,6 +13,7 @@ export interface Session {
   shortDate: string;
   longDate: string;
   timeRange: string;
+  place: string;
   room?: string;
   summary?: string;
   agenda?: string[];
@@ -76,13 +77,14 @@ export async function getSemesters(now = new Date()): Promise<Semester[]> {
         return {
           id: `${data.key}-${String(i + 1).padStart(2, '0')}`,
           number: String(i + 1).padStart(2, '0'),
-          title: s.title,
+          title: s.title ?? 'Club meeting',
           startISO,
           endISO,
           weekday,
           shortDate: `${weekday} ${dm}`,
           longDate: `${weekday} ${dm} ${yearFmt.format(day)}`,
           timeRange: `${start}–${end}`,
+          place: s.place ?? data.defaults.place ?? site.school,
           room: s.room ?? data.defaults.room,
           summary: s.summary,
           agenda: s.agenda,

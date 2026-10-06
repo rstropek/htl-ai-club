@@ -539,7 +539,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Expand and key hints, status line, copy chip."
+        "purpose": "Expand and key hints, status line."
       },
       "footnote": {
         "displayName": "Footnote",

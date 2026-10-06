@@ -125,11 +125,6 @@ components:
   diff-row-del:
     backgroundColor: "{colors.diff-del-bg}"
     textColor: "{colors.diff-del-fg}"
-  copy-chip:
-    textColor: "{colors.dim-ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.row}"
-    padding: "0 0.8ch"
 ---
 
 # Design System: AI Club
@@ -165,7 +160,7 @@ A neutral terminal ground with exactly one voice of colour, the club's hot pink,
 - **Paper** (`paper`, `paper-dark`): the full-bleed ground; also the text colour on pink (selection, skip link).
 - **Ink** (`ink`, `ink-dark`): primary text, the agent's message dot, bold emphasis. 16.7:1 light, 15.4:1 dark.
 - **Dim Ink** (`dim-ink`, `dim-ink-dark`): everything the terminal greys out: paths, result lines, labels, line numbers, hints like `(ctrl+o to expand)`, the status line, footer, finished sessions. Measured 6.6:1 light and 7.0:1 dark; it is body-legible, not decorative.
-- **Rule** (`rule`, `rule-dark`): the input box border at rest, command-key borders, the copy chip, the dashed footer rule, scrollbar.
+- **Rule** (`rule`, `rule-dark`): the input box border at rest, command-key borders, the dashed footer rule, scrollbar.
 - **Hover Wash** (`hover-wash`, `hover-wash-dark`): the row highlight for session rows, permission options, the selected slash-menu item and command keys on hover.
 - **Prompt Wash** (`prompt-wash`, `prompt-wash-dark`): the band behind a line the human typed.
 
@@ -191,7 +186,7 @@ A neutral terminal ground with exactly one voice of colour, the club's hot pink,
 - **Body** (Neon 400, `clamp(14.5px, 13.4px + 0.3vw, 17px)`, line-height 1.6): everything. Ligatures and contextual alternates on, tabular numerals on. Prose is capped at 74ch inside a 92ch column.
 - **Title** (Neon 700, same size): tool names (`Read`, `Update`), the club's full name, "Next session", the permission question, the next session's title, inline emphasis. Weight is the only heading device.
 - **Human** (Radon 400, same size): what the human types.
-- **Label** (Neon 400, 0.92em): expand hints, keyboard hints, the status line, the copy chip.
+- **Label** (Neon 400, 0.92em): expand hints, keyboard hints, the status line.
 - **Footnote** (Neon 400, 0.88em): the footer only.
 
 The block-letter AI CLUB banner is the only display element, and it is not type: it is an SVG of 6x12 terminal cells (each cell one block character) with a half-cell offset shade layer.
@@ -218,7 +213,7 @@ Flat. There are no box shadows anywhere. Depth is conveyed the way a terminal co
 
 ## Shapes
 
-Corners come in four steps tied to role: 3px for the focus ring, 4px for anything that is a line of text with a wash (session rows, options, prompt band, diff block, copy chip, menu items), 6px for command keys, 10px for the three framed boxes (welcome, permission, input). Frames are single strokes: 1.5px for boxes, 1px for keys, chips and internal dividers, dashed 1px for the footer rule.
+Corners come in four steps tied to role: 3px for the focus ring, 4px for anything that is a line of text with a wash (session rows, options, prompt band, diff block, menu items), 6px for command keys, 10px for the three framed boxes (welcome, permission, input). Frames are single strokes: 1.5px for boxes, 1px for keys, chips and internal dividers, dashed 1px for the footer rule.
 
 Glyphs are drawn, not typed: the message dot is a 0.56em circle centred on the first line; the result elbow is a two-sided 1.5px border; checkboxes are a 12-unit SVG square that shows a cross when done and a filled inner square when next; the pointer is a stroked chevron; the club mark is a filled diamond; the spinner is a pink rotated square that pulses. The banner is crisp-edged cells. Plain text characters that Monaspace itself renders (`-`, `·`, `*`, `>`, `←`, `…`) stay text.
 
@@ -241,7 +236,7 @@ A line the human typed: a prompt-wash band with 4px corners, pulled out by 1ch o
 A dot in the gutter, body to the right. Agent messages use an ink dot; finished tool calls use the green dot and a bold tool name with a dim path in parentheses. Results hang under an elbow glyph, first line dim. Lists use a dim `-` (pitch) or `·` (agenda) in a 2ch marker column.
 
 ### Session checklist (signature)
-Each session is a full-width button row: checkbox, dim number, title, dim date, and a dim `… +N lines (ctrl+o to expand)` hint (`tap to expand` on touch). Done sessions are dimmed and struck through with a cross in the box; the next session gets a filled pink box, bold title, pink date and a pink `← next` tag, and opens by default. Rows take the hover wash at 4px. Expanding animates `grid-template-rows` over 0.32s and reveals a nested `Read(sessions/…md)` call with a key/value result and a share link plus copy chip.
+Each session is a full-width button row: checkbox, dim number, title ("Club meeting" unless the event has a name), dim date with start time, and a dim `… +N lines (ctrl+o to expand)` hint (`tap to expand` on touch). Done sessions are dimmed and struck through with a cross in the box; the next session gets a filled pink box, bold title, pink date and a pink `← next` tag, and opens by default. Rows take the hover wash at 4px. Expanding animates `grid-template-rows` over 0.32s and reveals a nested `Read(sessions/…md)` call with a key/value result: `when` (date and time range) and `where` (the place, HTL Leonding unless set). Optional detail rows (what, agenda, bring, level, needs, host, link) appear only when the data has them; currently only dates and times are announced.
 
 ### Diff
 Line-numbered rows in a 4px-rounded block: context in dim ink, removed lines on the red wash, added lines on the green wash, numbers at 80% opacity within coloured rows.

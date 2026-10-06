@@ -114,6 +114,11 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 button {
   font: inherit;
   color: inherit;
@@ -511,7 +516,8 @@ button {
   border-radius: 4px;
   transition: background-color 0.15s;
 }
-.row:hover {
+.row:hover,
+.row:active {
   background: var(--hover);
 }
 .check {
@@ -619,29 +625,6 @@ html:not(.js) .row {
 .agenda li::before {
   content: '·';
   color: var(--dim);
-}
-.share {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.4em 1.5ch;
-}
-.share-link {
-  color: var(--accent);
-}
-.copy {
-  color: var(--dim);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 0 0.8ch;
-  font-size: 0.92em;
-  transition:
-    color 0.15s,
-    border-color 0.15s;
-}
-.copy:hover {
-  color: var(--fg);
-  border-color: var(--fg);
 }
 
 /* who runs it */

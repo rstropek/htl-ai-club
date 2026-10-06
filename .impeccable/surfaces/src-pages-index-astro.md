@@ -13,7 +13,7 @@ Audience: HTL Leonding students arriving from a class-chat link, mostly on portr
 
 Constraints: Astro static, GitHub Pages, dark by default, light via the `/theme` toggle, ~40-column phone reflow, no horizontal scroll. Sessions come from one YAML file per semester; done/next/upcoming derives from the date at runtime. Sessions expand in place to details when they exist; each has a deep link. No calendar link. Interface grammar of Claude Code, with the club's own glyph and accent; no Anthropic marks.
 
-Unresolved: Form URL, rooms, and session topics other than the CCC (placeholders). Dates and times are confirmed.
+Unresolved: Form URL. Sessions announce only date, time and place (no topics, no rooms).
 
 ## Direction contract
 

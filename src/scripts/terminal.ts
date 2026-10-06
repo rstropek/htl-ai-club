@@ -165,21 +165,16 @@ function updateNextLine() {
     return;
   }
   const title = next.querySelector('.title')?.firstChild?.textContent?.trim() ?? '';
-  const date = next.querySelector('.date time')?.textContent ?? '';
-  const start = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/Vienna',
-    hour: '2-digit',
-    minute: '2-digit',
-  }).format(new Date(next.dataset.start!));
+  const when = next.querySelector('.date time')?.textContent?.trim() ?? '';
   const link = el('a');
   link.href = `#${next.id}`;
-  link.append(el('b', '', `${date}, ${start}`), ` · ${title}`);
+  link.append(el('b', '', when), ` · ${title}`);
   line?.replaceChildren('Next up: ', link);
 
   const side = document.querySelector<HTMLAnchorElement>('.side-next');
   if (side) {
     side.href = `#${next.id}`;
-    side.replaceChildren(el('b', '', `${date} · ${start}`), el('span', '', title));
+    side.replaceChildren(el('b', '', when), el('span', '', title));
   }
 }
 
@@ -225,20 +220,6 @@ function handleHash() {
   else if (id.startsWith('sessions-')) revealLater()?.scrollIntoView({ block: 'start' });
 }
 window.addEventListener('hashchange', handleHash);
-
-document.addEventListener('click', async (e) => {
-  const btn = (e.target as Element).closest<HTMLButtonElement>('button[data-copy]');
-  if (!btn) return;
-  const status = btn.parentElement?.querySelector('.copy-status');
-  const url = `${location.href.split('#')[0]}#${btn.dataset.copy}`;
-  try {
-    await navigator.clipboard.writeText(url);
-    if (status) status.textContent = 'copied';
-  } catch {
-    if (status) status.textContent = "couldn't copy. Press and hold the link instead.";
-  }
-  window.setTimeout(() => status && (status.textContent = ''), 2400);
-});
 
 /* ---------- permission prompt ---------- */
 
@@ -290,7 +271,7 @@ function answer(kind: string, label: string) {
       echo(q),
       message(
         ['Guests are welcome at our sessions.'],
-        ['Pick a date above, check the time and room, and come by. Rooms are announced before each session.'],
+        ['Pick a date above, check the time and place, and come by.'],
       ),
     );
   }

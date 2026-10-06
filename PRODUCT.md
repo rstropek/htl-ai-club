@@ -34,7 +34,7 @@ A hands-on student club built around *algorithmic problem solving* with AI. It's
 
 - People: **Rainer Stropek** is the responsible teacher; **Benjamin Hartmann** is the club president (a student). The club is student-led with teacher responsibility, and both may be named on the site.
 - Session content: learning about AI coding tools, hands-on practice, discussions of current developments, and members exchanging experiences, tricks, tips, preferences, settings, and agent skills.
-- Calendar: sessions every two to four weeks, usually Wednesdays 17:30–19:30 (6 in winter 26/27, 8 in summer 27). The first, on Fri 23 Oct 2026 10:00–12:00, is the CCC (Cloudflight Coding Contest). Dates and times are confirmed; topics other than the CCC are not yet.
+- Calendar: sessions every two to four weeks, usually Wednesdays 17:30–19:30 (6 in winter 26/27, 8 in summer 27). The first, on Fri 23 Oct 2026 10:00–12:00, is the CCC (Cloudflight Coding Contest) at JKU Linz; all other sessions are at HTL Leonding. The club currently announces only dates, times and places: no session topics, no rooms.
 - Joining happens through an external **Microsoft Form** that the club owner provides. The site links out to it and does not handle sign-ups itself.
 - Sessions are recurring club meetings: learning, hands-on practice, and discussion of current AI developments.
 
@@ -45,7 +45,6 @@ A hands-on student club built around *algorithmic problem solving* with AI. It's
 - Out of scope for now: hosted learning content (slides, recordings), member tools.
 - **Open decisions:**
   - The Microsoft Form URL has not been provided yet. Use a clearly marked placeholder.
-  - Session topics (except the CCC) and rooms are not yet confirmed.
 
 ## Brand Commitments
 
