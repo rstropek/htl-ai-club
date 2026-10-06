@@ -23,11 +23,13 @@ const pitch = [
   'swap what works: experiences, tricks, preferences, settings, agent skills',
 ];
 const plan = [
-  'Pick one topic, such as context management, tool calling or sandboxing',
+  'We pick a topic related to agentic coding',
   'Introduce it for beginners, as a recap for semi-pros',
   'Dive into specific details for pros',
   'Try it hands-on in an example',
 ];
+// Possible session topics, shown as lines added to the visitor's Wednesday evenings.
+const topics = ['Context management', 'Tool calling', 'Sandboxing', 'Agent skills', 'MCP servers', 'Subagents'];
 const commands = [
   { cmd: '/join', desc: site.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)' },
   { cmd: '/next', desc: 'show the next session' },
@@ -239,39 +241,39 @@ const commands = [
 
 
 
-      <section class="msg" aria-label="An example of what members take home" data-step>
+      <section class="msg" aria-label="Possible topics" data-step>
         <Glyph name="dot" />
         <div class="msg-body prose">
-          <p>A typical take-home: a rule another member already tested, now in your own agent setup.</p>
+          <p>Possible topics, and what they replace:</p>
         </div>
       </section>
 
-      <section class="msg tool" aria-label="Example change to an agent instruction file" data-step>
+      <section class="msg tool" aria-label="Possible topics as an edit to your Wednesday evenings" data-step>
         <Glyph name="dot" class="ok" />
         <div class="msg-body">
-          <h2 class="tool-call"><b>Update</b>(<span class="path">your-setup/<wbr />AGENTS.md</span>)</h2>
+          <h2 class="tool-call"><b>Update</b>(<span class="path">~/wednesday-<wbr />evenings.md</span>)</h2>
           <div class="result">
             <Glyph name="elbow" />
             <div class="result-body">
               <p class="dim result-line">
-                Updated <b class="fg">your-setup/AGENTS.md</b> with <b class="fg">3</b> additions and <b class="fg">1</b> removal
+                Updated <b class="fg">~/wednesday-evenings.md</b> with <b class="fg">{topics.length}</b> additions and <b class="fg">1</b> removal
               </p>
-              <div class="diff" role="table" aria-label="Diff of AGENTS.md">
+              <div class="diff" role="table" aria-label="Diff of wednesday-evenings.md">
                 <div class="diff-row ctx" role="row">
-                  <span class="ln" role="cell">14</span><span class="sg" role="cell"></span><span class="code" role="cell">## How to work with me</span>
+                  <span class="ln" role="cell">1</span><span class="sg" role="cell"></span><span class="code" role="cell">## Wednesday, 17:30</span>
                 </div>
                 <div class="diff-row del" role="row">
-                  <span class="ln" role="cell">15</span><span class="sg" role="cell" aria-label="removed">-</span><span class="code" role="cell">Just fix it.</span>
+                  <span class="ln" role="cell">2</span><span class="sg" role="cell" aria-label="removed">-</span><span class="code" role="cell">Doomscrolling alone at home</span>
                 </div>
-                <div class="diff-row add" role="row">
-                  <span class="ln" role="cell">15</span><span class="sg" role="cell" aria-label="added">+</span><span class="code" role="cell">Write a failing test first, then make it pass.</span>
-                </div>
-                <div class="diff-row add" role="row">
-                  <span class="ln" role="cell">16</span><span class="sg" role="cell" aria-label="added">+</span><span class="code" role="cell">Explain your plan before you edit any file.</span>
-                </div>
-                <div class="diff-row add" role="row">
-                  <span class="ln" role="cell">17</span><span class="sg" role="cell" aria-label="added">+</span><span class="code" role="cell">Keep each diff small enough to review in a minute.</span>
-                </div>
+                {
+                  topics.map((t, i) => (
+                    <div class="diff-row add" role="row">
+                      <span class="ln" role="cell">{i + 2}</span>
+                      <span class="sg" role="cell" aria-label="added">+</span>
+                      <span class="code" role="cell">{t}</span>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </div>

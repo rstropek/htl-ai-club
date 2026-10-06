@@ -133,7 +133,7 @@ components:
 
 **Creative North Star: "The Replayed Session"**
 
-The whole site is one terminal coding-agent session played back to the visitor: a welcome box, a question the human typed, the agent's answer streamed as messages, tool calls whose results are the club's real data, a diff as the example of what members take home, a permission prompt as the call to action, and a live input box with a slash menu and a status line underneath. Every surface is a turn in that transcript. Nothing is a card, a hero or a pitch block; if a new piece of content cannot be expressed as something a session would print, it does not yet belong.
+The whole site is one terminal coding-agent session played back to the visitor: a welcome box, a question the human typed, the agent's answer streamed as messages, tool calls whose results are the club's real data, a diff of the visitor's Wednesday evenings that swaps doomscrolling for possible topics, a permission prompt as the call to action, and a live input box with a slash menu and a status line underneath. Every surface is a turn in that transcript. Nothing is a card, a hero or a pitch block; if a new piece of content cannot be expressed as something a session would print, it does not yet belong.
 
 The ground is full-bleed and flat in both themes, a near-black terminal by default and a warm off-white paper when the visitor picks it with `/theme`. Density is that of a real terminal: one monospace voice, one text size, hierarchy carried by weight, dimming and the club pink rather than by scale. Structure comes from character-cell geometry: a fixed gutter column for bullets and elbows, `ch`-based grids for labels and numbers, rounded single-rule boxes for the moments that need a frame.
 
