@@ -38,8 +38,7 @@ const commands = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AI Club · HTL Leonding</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#fcfbfa" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#131215" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#131215" />
     <meta property="og:title" content="AI Club · Algorithmic Problem Solving with AI" />
     <meta property="og:description" content={description} />
     <link rel="icon" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} type="image/svg+xml" />
@@ -49,6 +48,7 @@ const commands = [
         try {
           var t = localStorage.getItem('aiclub-theme');
           if (t === 'light' || t === 'dark') root.dataset.theme = t;
+          if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fcfbfa');
         } catch (e) {}
         var replay = false;
         try {

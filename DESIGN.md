@@ -140,7 +140,7 @@ components:
 
 The whole site is one terminal coding-agent session played back to the visitor: a welcome box, a question the human typed, the agent's answer streamed as messages, tool calls whose results are the club's real data, a diff as the example of what members take home, a permission prompt as the call to action, and a live input box with a slash menu and a status line underneath. Every surface is a turn in that transcript. Nothing is a card, a hero or a pitch block; if a new piece of content cannot be expressed as something a session would print, it does not yet belong.
 
-The ground is full-bleed and flat in both themes, a warm off-white paper by default and a near-black terminal by system preference or `/theme`. Density is that of a real terminal: one monospace voice, one text size, hierarchy carried by weight, dimming and the club pink rather than by scale. Structure comes from character-cell geometry: a fixed gutter column for bullets and elbows, `ch`-based grids for labels and numbers, rounded single-rule boxes for the moments that need a frame.
+The ground is full-bleed and flat in both themes, a near-black terminal by default and a warm off-white paper when the visitor picks it with `/theme`. Density is that of a real terminal: one monospace voice, one text size, hierarchy carried by weight, dimming and the club pink rather than by scale. Structure comes from character-cell geometry: a fixed gutter column for bullets and elbows, `ch`-based grids for labels and numbers, rounded single-rule boxes for the moments that need a frame.
 
 The club pink is the only hue that speaks for the club. Green and red appear only as the session's own semantics (a finished tool call, an added or removed diff line). The look nods to terminal coding agents generally and carries no vendor marks; the footer states it is not affiliated with any AI vendor.
 
@@ -178,7 +178,7 @@ A neutral terminal ground with exactly one voice of colour, the club's hot pink,
 
 **The Semantics-Only Green and Red Rule.** Green and red exist because the session prints them: finished tool calls and diff lines. They never appear as brand colour, status badges or decoration.
 
-**The Two Measured Themes Rule.** Every colour token exists in a light and a dark value, switched by `prefers-color-scheme` and overridable by `data-theme`. A new token is not finished until both values are measured against their ground.
+**The Two Measured Themes Rule.** Every colour token exists in a dark and a light value. Dark is the default for every visitor regardless of system preference; light applies only through `data-theme="light"`, set by `/theme` and remembered per visitor. A new token is not finished until both values are measured against their ground.
 
 ## Typography
 

@@ -80,8 +80,8 @@ function print(...nodes: Node[]) {
 
 /* ---------- theme ---------- */
 
-const darkQuery = matchMedia('(prefers-color-scheme: dark)');
-const currentTheme = () => (root.dataset.theme as 'light' | 'dark' | undefined) ?? (darkQuery.matches ? 'dark' : 'light');
+// Dark is the default; light applies only when the visitor picks it.
+const currentTheme = () => (root.dataset.theme === 'light' ? 'light' : 'dark');
 
 function renderTheme() {
   const theme = currentTheme();
@@ -95,6 +95,7 @@ function renderTheme() {
 
 function setTheme(theme: 'light' | 'dark') {
   root.dataset.theme = theme;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#fcfbfa' : '#131215');
   try {
     localStorage.setItem('aiclub-theme', theme);
   } catch {}
@@ -104,7 +105,6 @@ function setTheme(theme: 'light' | 'dark') {
 document.querySelectorAll('[data-theme-toggle]').forEach((btn) =>
   btn.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark')),
 );
-darkQuery.addEventListener('change', renderTheme);
 renderTheme();
 
 /* ---------- sessions: status, expand, deep links ---------- */

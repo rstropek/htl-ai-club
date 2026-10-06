@@ -1,53 +1,7 @@
 /* AI Club: a replayed coding-agent session.
-   Light theme is the default token set; dark applies by system preference or by choice. */
+   Dark is the default for every visitor; light applies only when chosen with /theme. */
 
 :root {
-  color-scheme: light;
-  --bg: #fcfbfa;
-  --fg: #1c1a1f;
-  --dim: #5e5965;
-  --rule: #d9d5dd;
-  --hover: #f2f0ee;
-  --accent: #c2185b;
-  --on-accent: #fcfbfa;
-  --accent-soft: #fbe4ec;
-  --ok: #1b7a3a;
-  --add-bg: #ddf4e2;
-  --add-fg: #11552a;
-  --del-bg: #fbe3e3;
-  --del-fg: #99201f;
-  --prompt-bg: #f1eff2;
-  --banner-shade: #f3c6d6;
-
-  --mono: 'Monaspace Neon', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-  --hand: 'Monaspace Radon', 'Monaspace Neon', ui-monospace, monospace;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --gap: 1.6em;
-  --gutter: 2.4ch;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    color-scheme: dark;
-    --bg: #131215;
-    --fg: #ece9e5;
-    --dim: #a29da8;
-    --rule: #3a3740;
-    --hover: #1e1c21;
-    --accent: #ff5c93;
-    --on-accent: #131215;
-    --accent-soft: #3a1726;
-    --ok: #6fd08c;
-    --add-bg: #173520;
-    --add-fg: #b4f2c3;
-    --del-bg: #3e1b1f;
-    --del-fg: #ffb8b5;
-    --prompt-bg: #1f1d22;
-    --banner-shade: #5a1f37;
-  }
-}
-
-:root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #131215;
   --fg: #ece9e5;
@@ -64,6 +18,31 @@
   --del-fg: #ffb8b5;
   --prompt-bg: #1f1d22;
   --banner-shade: #5a1f37;
+
+  --mono: 'Monaspace Neon', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --hand: 'Monaspace Radon', 'Monaspace Neon', ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --gap: 1.6em;
+  --gutter: 2.4ch;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #fcfbfa;
+  --fg: #1c1a1f;
+  --dim: #5e5965;
+  --rule: #d9d5dd;
+  --hover: #f2f0ee;
+  --accent: #c2185b;
+  --on-accent: #fcfbfa;
+  --accent-soft: #fbe4ec;
+  --ok: #1b7a3a;
+  --add-bg: #ddf4e2;
+  --add-fg: #11552a;
+  --del-bg: #fbe3e3;
+  --del-fg: #99201f;
+  --prompt-bg: #f1eff2;
+  --banner-shade: #f3c6d6;
 }
 
 /* ---------- base ---------- */

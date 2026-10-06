@@ -11,7 +11,7 @@ Scope: the AI Club homepage (`src/pages/index.astro`). Visitor mode: Persuade.
 
 Audience: HTL Leonding students arriving from a class-chat link, mostly on portrait phones; guests second. Job: understand the club, see the next session, join. Action: "Yes, open the sign-up form" (Microsoft Form, URL pending). Proof: the page is the kind of session the club teaches; an example AGENTS.md diff shows what members take home.
 
-Constraints: Astro static, GitHub Pages, light + dark (system default, `/theme` toggle), ~40-column phone reflow, no horizontal scroll. Sessions come from one YAML file per semester; done/next/upcoming derives from the date at runtime. Sessions expand in place to details when they exist; each has a deep link. No calendar link. Interface grammar of Claude Code, with the club's own glyph and accent; no Anthropic marks.
+Constraints: Astro static, GitHub Pages, dark by default, light via the `/theme` toggle, ~40-column phone reflow, no horizontal scroll. Sessions come from one YAML file per semester; done/next/upcoming derives from the date at runtime. Sessions expand in place to details when they exist; each has a deep link. No calendar link. Interface grammar of Claude Code, with the club's own glyph and accent; no Anthropic marks.
 
 Unresolved: Form URL, rooms, and session topics other than the CCC (placeholders). Dates and times are confirmed.
 
