@@ -67,7 +67,7 @@ function detailLines(s: Semester['sessions'][number]) {
                     <span class="touch-hint">(tap to expand)</span>
                   </span>
                 </button>
-                <div class="details" id={`${s.id}-details`} role="region" aria-label={`${s.title} details`}>
+                <div class="details" id={`${s.id}-details`} role="region" aria-label={`${s.title}, ${s.shortDate}: time and place`}>
                   <div class="details-inner">
                     <p class="tool-call nested">
                       <Glyph name="dot" class="ok" />
@@ -84,7 +84,7 @@ function detailLines(s: Semester['sessions'][number]) {
                         </dd>
                         <dt>where</dt>
                         <dd>
-                          {s.place}
+                          <span class="place">{s.place}</span>
                           {s.room && ` · room ${s.room}`}
                         </dd>
                         {s.summary && (

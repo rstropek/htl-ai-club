@@ -355,6 +355,17 @@ button {
 .welcome-help {
   margin-top: 0.9em;
 }
+.run {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.2s;
+}
+.run:hover {
+  text-decoration-color: currentColor;
+}
 .side-title {
   color: var(--accent);
   font-weight: 700;

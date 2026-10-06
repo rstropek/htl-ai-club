@@ -58,12 +58,12 @@ function message(lines: (string | Node)[], result?: (string | Node)[], ok = fals
 function commandList() {
   const dl = el('dl', 'kv');
   const rows: [string, string][] = [
-    ['/join', 'open the sign-up form'],
+    ['/join', data.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)'],
     ['/next', 'show the next session'],
-    ['/sessions', 'all sessions, winter and summer'],
-    ['/people', 'who runs the club'],
-    ['/theme', 'switch light and dark'],
-    ['/help', 'list these commands'],
+    ['/sessions', 'show all sessions, winter and summer'],
+    ['/people', 'show who runs the club'],
+    ['/theme', 'switch between dark and light'],
+    ['/help', 'list all commands'],
   ];
   if (!touch.matches) {
     rows.push(['ctrl+o', 'expand or collapse the selected session'], ['1 2 3', 'answer the join question']);
@@ -159,9 +159,9 @@ function updateNextLine() {
   const line = document.querySelector<HTMLElement>('[data-next-line]');
   const next = nextId ? allSessions().find((s) => s.id === nextId) : null;
   if (!next) {
-    if (line) line.textContent = "The next semester's dates follow soon.";
+    if (line) line.textContent = 'Dates for the next semester follow soon.';
     const side = document.querySelector('.side-next');
-    if (side) side.replaceWith(el('span', 'dim', 'Dates for next semester follow soon.'));
+    if (side) side.replaceWith(el('span', 'dim', 'Dates for the next semester follow soon.'));
     return;
   }
   const title = next.querySelector('.title')?.firstChild?.textContent?.trim() ?? '';
@@ -174,7 +174,8 @@ function updateNextLine() {
   const side = document.querySelector<HTMLAnchorElement>('.side-next');
   if (side) {
     side.href = `#${next.id}`;
-    side.replaceChildren(el('b', '', when), el('span', '', title));
+    const place = next.querySelector('.place')?.textContent?.trim() ?? '';
+    side.replaceChildren(el('b', '', when), el('span', '', title), el('small', 'dim', place));
   }
 }
 
@@ -235,7 +236,7 @@ function renumber() {
   options().forEach((o, i) => (o.querySelector('.opt-n')!.textContent = `${i + 1}.`));
   const keys = document.querySelector('.permission .keys');
   if (keys) {
-    const units = ['↑↓ to choose', 'enter to confirm', `1–${options().length} to pick`].map((t) => el('span', 'unit', t));
+    const units = ['↑↓ to move', 'enter to select', `or press 1–${options().length}`].map((t) => el('span', 'unit', t));
     keys.replaceChildren(units[0], ' · ', units[1], ' · ', units[2]);
   }
 }
@@ -254,8 +255,8 @@ function hideSessionsOption() {
 function unlinkedJoin() {
   const people = (data.people ?? []).map((p) => p.name).join(' or ');
   return message(
-    ["The sign-up form isn't linked yet."],
-    [`Ask ${people || 'the club'} at school and they'll add you.`],
+    ["The sign-up form isn't online yet."],
+    [`Until it is, ask ${people || 'the club'} at school how to join.`],
   );
 }
 
@@ -270,8 +271,8 @@ function answer(kind: string, label: string) {
     print(
       echo(q),
       message(
-        ['Guests are welcome at our sessions.'],
-        ['Pick a date above, check the time and place, and come by.'],
+        ['Guests are welcome at our club meetings.'],
+        ['Pick a date above and come by at the listed time and place.'],
       ),
     );
   }
@@ -390,12 +391,12 @@ function run(raw: string) {
     }
     case '/next': {
       if (!nextId) {
-        print(said, message(["There's no upcoming session yet."], ["The next semester's dates follow soon."]));
+        print(said, message(["There's no upcoming session yet."], ['Dates for the next semester follow soon.']));
         break;
       }
       const session = allSessions().find((s) => s.id === nextId)!;
       const title = session.querySelector('.title')?.firstChild?.textContent?.trim() ?? '';
-      log.append(said, message([`Next session: ${session.querySelector('.date')?.textContent?.trim()} · ${title}`], ['Opened it in the list above.']));
+      log.append(said, message([`Next session: ${session.querySelector('.date')?.textContent?.trim()} · ${title}`], ['Opened it in the session list above.']));
       openSession(nextId);
       break;
     }
@@ -436,6 +437,11 @@ function run(raw: string) {
       );
   }
 }
+
+// Commands named in the welcome box run when clicked, as if typed.
+document.querySelectorAll<HTMLButtonElement>('button[data-run]').forEach((btn) =>
+  btn.addEventListener('click', () => run(btn.dataset.run!)),
+);
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
