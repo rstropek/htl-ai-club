@@ -34,6 +34,8 @@ A hands-on student club built around *algorithmic problem solving* with AI. It's
 
 - People: **Rainer Stropek** is the responsible teacher; **Benjamin Hartmann** is the club president (a student). The club is student-led with teacher responsibility, and both may be named on the site.
 - Session content: learning about AI coding tools, hands-on practice, discussions of current developments, and members exchanging experiences, tricks, tips, preferences, settings, and agent skills.
+- Session format: every session picks one topic (e.g. context management, tool calling, sandboxing), introduces it for beginners as a recap for semi-pros, dives into specific details for pros, and then tries it hands-on in an example.
+- Prerequisites: no own coding agent is required; students can use **Novedu**, the school's free coding agent.
 - Calendar: sessions every two to four weeks, usually Wednesdays 17:30–19:30 (6 in winter 26/27, 8 in summer 27). The first, on Fri 23 Oct 2026 10:00–12:00, is the CCC (Cloudflight Coding Contest) at JKU Linz; all other sessions are at HTL Leonding. The club currently announces only dates, times and places: no session topics, no rooms.
 - Joining happens through an external **Microsoft Form** that the club owner provides. The site links out to it and does not handle sign-ups itself.
 - Sessions are recurring club meetings: learning, hands-on practice, and discussion of current AI developments.

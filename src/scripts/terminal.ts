@@ -139,6 +139,15 @@ function applyStatus() {
   if (!found) nextId = null;
 }
 
+/** Show the expand hint once per list, on its first collapsed session, instead of on every row. */
+function markHints(scope: ParentNode = document) {
+  scope.querySelectorAll('ol.sessions').forEach((list) => {
+    const rows = [...list.querySelectorAll<HTMLElement>(':scope > li.session')];
+    const first = rows.find((s) => !('open' in s.dataset));
+    rows.forEach((s) => (s === first ? (s.dataset.hint = '') : delete s.dataset.hint));
+  });
+}
+
 function setOpen(session: HTMLElement, open: boolean) {
   const row = session.querySelector<HTMLButtonElement>('.row');
   const details = session.querySelector<HTMLElement>('.details');
@@ -146,6 +155,8 @@ function setOpen(session: HTMLElement, open: boolean) {
   else delete session.dataset.open;
   row?.setAttribute('aria-expanded', String(open));
   if (details) details.inert = !open;
+  const list = session.closest('ol.sessions');
+  if (list) markHints(list.parentElement ?? document);
 }
 
 function initSessions(scope: ParentNode) {
@@ -175,7 +186,7 @@ function updateNextLine() {
   if (side) {
     side.href = `#${next.id}`;
     const place = next.querySelector('.place')?.textContent?.trim() ?? '';
-    side.replaceChildren(el('b', '', when), el('span', '', title), el('small', 'dim', place));
+    side.replaceChildren(el('b', '', when), el('span', '', title), el('small', '', place));
   }
 }
 

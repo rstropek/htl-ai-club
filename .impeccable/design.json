@@ -193,40 +193,40 @@
       "dim-ink": {
         "role": "neutral",
         "displayName": "Dim Ink",
-        "canonical": "#5e5965",
-        "oklch": "oklch(47.3% 0.020 304.5)",
+        "canonical": "#524d58",
+        "oklch": "oklch(42.9% 0.019 306.1)",
         "theme": "light",
         "cssVar": "--dim",
         "tonalRamp": [
-          "oklch(15% 0.020 304.5)",
-          "oklch(26% 0.020 304.5)",
-          "oklch(38% 0.020 304.5)",
-          "oklch(50% 0.020 304.5)",
-          "oklch(62% 0.020 304.5)",
-          "oklch(74% 0.020 304.5)",
-          "oklch(85% 0.020 304.5)",
-          "oklch(95% 0.020 304.5)"
+          "oklch(15% 0.019 306.1)",
+          "oklch(26% 0.019 306.1)",
+          "oklch(38% 0.019 306.1)",
+          "oklch(50% 0.019 306.1)",
+          "oklch(62% 0.019 306.1)",
+          "oklch(74% 0.019 306.1)",
+          "oklch(85% 0.019 306.1)",
+          "oklch(95% 0.019 306.1)"
         ],
-        "contrast": "6.57:1 on paper"
+        "contrast": "7.93:1 on paper"
       },
       "dim-ink-dark": {
         "role": "neutral",
         "displayName": "Dim Ink (dark)",
-        "canonical": "#a29da8",
-        "oklch": "oklch(70.4% 0.017 306.3)",
+        "canonical": "#b6b1bb",
+        "oklch": "oklch(76.8% 0.015 308.2)",
         "theme": "dark",
         "cssVar": "--dim",
         "tonalRamp": [
-          "oklch(15% 0.017 306.3)",
-          "oklch(26% 0.017 306.3)",
-          "oklch(38% 0.017 306.3)",
-          "oklch(50% 0.017 306.3)",
-          "oklch(62% 0.017 306.3)",
-          "oklch(74% 0.017 306.3)",
-          "oklch(85% 0.017 306.3)",
-          "oklch(95% 0.017 306.3)"
+          "oklch(15% 0.015 308.2)",
+          "oklch(26% 0.015 308.2)",
+          "oklch(38% 0.015 308.2)",
+          "oklch(50% 0.015 308.2)",
+          "oklch(62% 0.015 308.2)",
+          "oklch(74% 0.015 308.2)",
+          "oklch(85% 0.015 308.2)",
+          "oklch(95% 0.015 308.2)"
         ],
-        "contrast": "7.04:1 on paper-dark"
+        "contrast": "8.88:1 on paper-dark"
       },
       "rule": {
         "role": "neutral",
@@ -624,7 +624,7 @@
       "refersTo": "command-key",
       "description": "Slash command as a small key in the topbar; /join is the pink variant.",
       "html": "<div class=\"ds-t\" style=\"display:flex;gap:1.5ch\"><button class=\"ds-key\">/theme <span class=\"ds-tdot\"></span></button><a class=\"ds-key ds-key-join\" href=\"#\">/join</a></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-key{display:inline-flex;align-items:center;gap:.8ch;padding:.15em 1ch;border:1px solid var(--rule);border-radius:6px;color:var(--fg);background:none;font:inherit;text-decoration:none;cursor:pointer;transition:border-color .2s,background-color .2s} .ds-key:hover{border-color:var(--accent);background:var(--hover)} .ds-key:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-key-join{border-color:var(--accent);color:var(--accent)} .ds-tdot{width:.75em;height:.75em;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-key{display:inline-flex;align-items:center;gap:.8ch;padding:.15em 1ch;border:1px solid var(--rule);border-radius:6px;color:var(--fg);background:none;font:inherit;text-decoration:none;cursor:pointer;transition:border-color .2s,background-color .2s} .ds-key:hover{border-color:var(--accent);background:var(--hover)} .ds-key:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-key-join{border-color:var(--accent);color:var(--accent)} .ds-tdot{width:.75em;height:.75em;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)}"
     },
     {
       "name": "Permission Prompt",
@@ -632,7 +632,7 @@
       "refersTo": "permission-box",
       "description": "The call to action: a pink-framed question with numbered options; the active one is pink with a chevron.",
       "html": "<div class=\"ds-t\"><section class=\"ds-perm\"><p class=\"ds-q\">Join the AI Club?</p><p class=\"ds-dim\">Sign-up takes a minute, through a Microsoft Form.</p><div class=\"ds-opts\"><button class=\"ds-opt\" data-active><svg class=\"ds-ptr\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M4 2.25L8 6l-4 3.75\"/></svg><span class=\"ds-n\">1.</span><span>Yes, open the sign-up form</span></button><button class=\"ds-opt\"><svg class=\"ds-ptr\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M4 2.25L8 6l-4 3.75\"/></svg><span class=\"ds-n\">2.</span><span>Show me all sessions first</span></button></div><p class=\"ds-dim\" style=\"font-size:.92em\">↑↓ to choose · enter to confirm</p></section></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-perm{border:1.5px solid var(--accent);border-radius:10px;padding:1em 2ch 1.1em} .ds-q{margin:0;font-weight:700} .ds-perm p{margin:0} .ds-opts{margin:.8em 0 .6em -1ch} .ds-opt{display:grid;grid-template-columns:2.2ch 3ch 1fr;width:100%;padding:.25em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s,color .15s} .ds-opt:hover{background:var(--hover)} .ds-opt:focus-visible{outline:2px solid var(--accent)} .ds-n{color:var(--dim)} .ds-ptr{width:1em;height:1em;margin-top:.3em;visibility:hidden} .ds-ptr path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round} .ds-opt[data-active]{color:var(--accent)} .ds-opt[data-active] .ds-n{color:var(--accent)} .ds-opt[data-active] .ds-ptr{visibility:visible}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-perm{border:1.5px solid var(--accent);border-radius:10px;padding:1em 2ch 1.1em} .ds-q{margin:0;font-weight:700} .ds-perm p{margin:0} .ds-opts{margin:.8em 0 .6em -1ch} .ds-opt{display:grid;grid-template-columns:2.2ch 3ch 1fr;width:100%;padding:.25em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s,color .15s} .ds-opt:hover{background:var(--hover)} .ds-opt:focus-visible{outline:2px solid var(--accent)} .ds-n{color:var(--dim)} .ds-ptr{width:1em;height:1em;margin-top:.3em;visibility:hidden} .ds-ptr path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round} .ds-opt[data-active]{color:var(--accent)} .ds-opt[data-active] .ds-n{color:var(--accent)} .ds-opt[data-active] .ds-ptr{visibility:visible}"
     },
     {
       "name": "Input Box",
@@ -640,7 +640,7 @@
       "refersTo": "input-box",
       "description": "The live command line: Radon input with a pink caret, rule border that darkens on focus, dim status line below.",
       "html": "<div class=\"ds-t\"><div class=\"ds-in\"><span class=\"ds-dim\">&gt;</span><input placeholder=\"Try &quot;/join&quot; or &quot;/sessions&quot;\" aria-label=\"Command\"></div><div class=\"ds-status ds-dim\"><span>? for shortcuts · guests welcome</span><span>dark</span></div></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-in{display:grid;grid-template-columns:2.4ch 1fr;align-items:center;border:1.5px solid var(--rule);border-radius:10px;padding:.55em 2ch;transition:border-color .2s} .ds-in:focus-within{border-color:var(--dim)} .ds-in input{font:inherit;font-family:var(--hand);color:var(--fg);background:transparent;border:0;padding:0;outline:none;caret-color:var(--accent);min-width:0} .ds-in input::placeholder{color:var(--dim);opacity:1} .ds-status{display:flex;justify-content:space-between;padding:.35em 2ch 0;font-size:.92em}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-in{display:grid;grid-template-columns:2.4ch 1fr;align-items:center;border:1.5px solid var(--rule);border-radius:10px;padding:.55em 2ch;transition:border-color .2s} .ds-in:focus-within{border-color:var(--dim)} .ds-in input{font:inherit;font-family:var(--hand);color:var(--fg);background:transparent;border:0;padding:0;outline:none;caret-color:var(--accent);min-width:0} .ds-in input::placeholder{color:var(--dim);opacity:1} .ds-status{display:flex;justify-content:space-between;padding:.35em 2ch 0;font-size:.92em}"
     },
     {
       "name": "User Prompt",
@@ -648,7 +648,7 @@
       "refersTo": "user-prompt",
       "description": "A line the human typed: prompt-wash band, dim > in the gutter, Radon text, pink block cursor while typing.",
       "html": "<div class=\"ds-t\"><p class=\"ds-up\"><span class=\"ds-dim\" style=\"font-family:var(--mono)\">&gt;</span><span class=\"ds-typed\">what is this club?</span></p></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-up{display:grid;grid-template-columns:2.4ch 1fr;margin:0;background:var(--prompt-bg);padding:.35em 1ch;border-radius:4px;font-family:var(--hand)} .ds-typed::after{content:'';display:inline-block;width:.6em;height:1.1em;vertical-align:-.2em;margin-left:1px;background:var(--accent)}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-up{display:grid;grid-template-columns:2.4ch 1fr;margin:0;background:var(--prompt-bg);padding:.35em 1ch;border-radius:4px;font-family:var(--hand)} .ds-typed::after{content:'';display:inline-block;width:.6em;height:1.1em;vertical-align:-.2em;margin-left:1px;background:var(--accent)}"
     },
     {
       "name": "Tool Call with Result",
@@ -656,7 +656,7 @@
       "refersTo": null,
       "description": "Green dot, bold tool name, dim path; result hangs under a drawn elbow.",
       "html": "<div class=\"ds-t\"><div class=\"ds-msg\"><span class=\"ds-dot\"></span><div><p class=\"ds-call\"><b>Read</b>(<span class=\"ds-dim\">CODEOWNERS</span>)</p><div class=\"ds-res\"><span class=\"ds-elbow\"></span><p class=\"ds-dim\">Winter 26/27 · 6 sessions</p></div></div></div></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-msg,.ds-res{display:grid;grid-template-columns:2.4ch 1fr;align-items:start} .ds-msg p{margin:0} .ds-dot{display:inline-block;width:.56em;height:.56em;border-radius:50%;background:var(--ok);margin-top:calc((1.6em - .56em)/2)} .ds-elbow{display:inline-block;width:.7em;height:.62em;border-left:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);margin:.1em 0 0 .15em}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-msg,.ds-res{display:grid;grid-template-columns:2.4ch 1fr;align-items:start} .ds-msg p{margin:0} .ds-dot{display:inline-block;width:.56em;height:.56em;border-radius:50%;background:var(--ok);margin-top:calc((1.6em - .56em)/2)} .ds-elbow{display:inline-block;width:.7em;height:.62em;border-left:1.5px solid var(--dim);border-bottom:1.5px solid var(--dim);margin:.1em 0 0 .15em}"
     },
     {
       "name": "Session Row",
@@ -664,7 +664,7 @@
       "refersTo": "session-row",
       "description": "Checklist row: drawn checkbox, dim number, title, dim date; next session in pink with filled box and bold title.",
       "html": "<div class=\"ds-t\"><button class=\"ds-row ds-next\"><svg class=\"ds-chk\" viewBox=\"0 0 12 12\"><rect x=\"1.5\" y=\"1.5\" width=\"9\" height=\"9\" rx=\"1\" class=\"b\"/><rect x=\"3.5\" y=\"3.5\" width=\"5\" height=\"5\" class=\"f\"/></svg><span class=\"ds-dim\">01</span><span class=\"ds-title\">CCC Cloudflight Coding Contest</span><span class=\"ds-date\">Fri 23 Oct</span></button><button class=\"ds-row\"><svg class=\"ds-chk\" viewBox=\"0 0 12 12\"><rect x=\"1.5\" y=\"1.5\" width=\"9\" height=\"9\" rx=\"1\" class=\"b\"/></svg><span class=\"ds-dim\">02</span><span class=\"ds-title\">Prompting is debugging<br><span class=\"ds-dim\" style=\"font-size:.92em\">… +10 lines (ctrl+o to expand)</span></span><span class=\"ds-date\">Wed 4 Nov</span></button></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-row{display:grid;grid-template-columns:2.4ch 3.2ch 1fr auto;width:100%;padding:.2em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s} .ds-row:hover{background:var(--hover)} .ds-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-chk{width:1em;height:1em;margin-top:.3em;color:var(--dim)} .ds-chk .b{fill:none;stroke:currentColor;stroke-width:1.2} .ds-chk .f{fill:currentColor} .ds-date{color:var(--dim);white-space:nowrap} .ds-title{padding-right:2ch} .ds-next .ds-chk,.ds-next .ds-date{color:var(--accent)} .ds-next .ds-title{font-weight:700} .ds-next .ds-title::after{content:'  ← next';font-weight:400;color:var(--accent);white-space:pre}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-row{display:grid;grid-template-columns:2.4ch 3.2ch 1fr auto;width:100%;padding:.2em 1ch;border:0;border-radius:4px;background:none;font:inherit;color:var(--fg);text-align:left;cursor:pointer;transition:background-color .15s} .ds-row:hover{background:var(--hover)} .ds-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px} .ds-chk{width:1em;height:1em;margin-top:.3em;color:var(--dim)} .ds-chk .b{fill:none;stroke:currentColor;stroke-width:1.2} .ds-chk .f{fill:currentColor} .ds-date{color:var(--dim);white-space:nowrap} .ds-title{padding-right:2ch} .ds-next .ds-chk,.ds-next .ds-date{color:var(--accent)} .ds-next .ds-title{font-weight:700} .ds-next .ds-title::after{content:'  ← next';font-weight:400;color:var(--accent);white-space:pre}"
     },
     {
       "name": "Diff",
@@ -672,7 +672,7 @@
       "refersTo": "diff-row-add",
       "description": "Line-numbered diff rows: dim context, red and green washes for removed and added lines.",
       "html": "<div class=\"ds-t\"><div class=\"ds-diff\"><div class=\"ds-dr ctx\"><span class=\"ln\">14</span><span></span><span>## How to work with me</span></div><div class=\"ds-dr del\"><span class=\"ln\">15</span><span>-</span><span>Just fix it.</span></div><div class=\"ds-dr add\"><span class=\"ln\">15</span><span>+</span><span>Write a failing test first, then make it pass.</span></div></div></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-diff{border-radius:4px;overflow:hidden} .ds-dr{display:grid;grid-template-columns:4ch 2ch 1fr;padding-right:1ch} .ds-dr .ln{text-align:right;padding-right:1ch;color:var(--dim)} .ds-dr.ctx{color:var(--dim)} .ds-dr.add{background:var(--add-bg);color:var(--add-fg)} .ds-dr.del{background:var(--del-bg);color:var(--del-fg)} .ds-dr.add .ln,.ds-dr.del .ln{color:inherit;opacity:.8}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-diff{border-radius:4px;overflow:hidden} .ds-dr{display:grid;grid-template-columns:4ch 2ch 1fr;padding-right:1ch} .ds-dr .ln{text-align:right;padding-right:1ch;color:var(--dim)} .ds-dr.ctx{color:var(--dim)} .ds-dr.add{background:var(--add-bg);color:var(--add-fg)} .ds-dr.del{background:var(--del-bg);color:var(--del-fg)} .ds-dr.add .ln,.ds-dr.del .ln{color:inherit;opacity:.8}"
     },
     {
       "name": "Welcome Box",
@@ -680,7 +680,7 @@
       "refersTo": "welcome-box",
       "description": "The opening frame: pink 1.5px border, diamond mark, identity left, next session (the only pink heading) right.",
       "html": "<div class=\"ds-t\"><section class=\"ds-wel\"><div class=\"ds-wm\"><p><svg class=\"ds-mark\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M6 .75L11.25 6 6 11.25.75 6z\"/></svg> Welcome to the <b>AI Club</b>!</p><p><b>Algorithmic Problem Solving with AI</b></p><p class=\"ds-dim\">cwd: ~/htl-leonding/ai-club</p></div><div class=\"ds-ws\"><p class=\"ds-side\">Next session</p><p><b>Fri 23 Oct · 10:00</b></p></div></section></div>",
-      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#5e5965;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-wel{display:grid;grid-template-columns:1.35fr 1fr;border:1.5px solid var(--accent);border-radius:10px} .ds-wel p{margin:0} .ds-wm,.ds-ws{padding:1.1em 2ch 1.2em} .ds-ws{border-left:1px solid color-mix(in oklab,var(--accent) 45%,transparent)} .ds-side{color:var(--accent);font-weight:700} .ds-mark{width:1em;height:1em;vertical-align:-.12em} .ds-mark path{fill:var(--accent)}"
+      "css": ":host{--bg:#fcfbfa;--fg:#1c1a1f;--dim:#524d58;--rule:#d9d5dd;--hover:#f2f0ee;--accent:#c2185b;--on-accent:#fcfbfa;--ok:#1b7a3a;--add-bg:#ddf4e2;--add-fg:#11552a;--del-bg:#fbe3e3;--del-fg:#99201f;--prompt-bg:#f1eff2;--mono:'Monaspace Neon',ui-monospace,Menlo,Consolas,monospace;--hand:'Monaspace Radon','Monaspace Neon',ui-monospace,monospace;--ease-out:cubic-bezier(0.16,1,0.3,1)} .ds-t{font-family:var(--mono);font-size:15px;line-height:1.6;color:var(--fg);background:var(--bg);font-variant-numeric:tabular-nums;padding:12px} .ds-dim{color:var(--dim)} .ds-wel{display:grid;grid-template-columns:1.35fr 1fr;border:1.5px solid var(--accent);border-radius:10px} .ds-wel p{margin:0} .ds-wm,.ds-ws{padding:1.1em 2ch 1.2em} .ds-ws{border-left:1px solid color-mix(in oklab,var(--accent) 45%,transparent)} .ds-side{color:var(--accent);font-weight:700} .ds-mark{width:1em;height:1em;vertical-align:-.12em} .ds-mark path{fill:var(--accent)}"
     }
   ],
   "narrative": {

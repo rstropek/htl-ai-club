@@ -21,6 +21,12 @@ const pitch = [
   "discuss what's new, and what's just hype",
   'swap what works: experiences, tricks, preferences, settings, agent skills',
 ];
+const plan = [
+  'Pick one topic, such as context management, tool calling or sandboxing',
+  'Introduce it for beginners, as a recap for semi-pros',
+  'Dive into specific details for pros',
+  'Try it hands-on in an example',
+];
 const commands = [
   { cmd: '/join', desc: site.joinFormUrl ? 'open the sign-up form' : 'sign up (form link coming soon)' },
   { cmd: '/next', desc: 'show the next session' },
@@ -106,7 +112,7 @@ const commands = [
                   <a href={`#${next.id}`} data-next-link class="side-next">
                     <b>{next.shortDate} · {next.timeRange.split('–')[0]}</b>
                     <span>{next.title}</span>
-                    <small class="dim">{next.place}</small>
+                    <small>{next.place}</small>
                   </a>
                 </p>
               ) : (
@@ -116,8 +122,8 @@ const commands = [
           </div>
           <div class="side-block">
             <h2 class="side-title quiet">Tips for getting started</h2>
-            <ol class="dim tips" role="list">
-              <li><span class="tip-n">1.</span> Bring a laptop and the AI tool you already use.</li>
+            <ol class="tips" role="list">
+              <li><span class="tip-n">1.</span> Bring a laptop. No coding agent of your own? Use Novedu, the school's free one.</li>
               <li><span class="tip-n">2.</span> No experience needed. Curiosity is.</li>
               <li><span class="tip-n">3.</span> Guests are welcome at our club meetings.</li>
             </ol>
@@ -141,6 +147,31 @@ const commands = [
           <ul class="dash-list" role="list" data-step>
             {pitch.map((line) => <li>{line}</li>)}
           </ul>
+        </div>
+      </section>
+
+      <section class="msg tool" aria-labelledby="plan-title" data-step>
+        <Glyph name="dot" class="ok" />
+        <div class="msg-body">
+          <h2 class="tool-call" id="plan-title"><b>Update Todos</b></h2>
+          <div class="result">
+            <Glyph name="elbow" />
+            <div class="result-body">
+              <p class="dim result-line">How every session runs</p>
+              <ol class="todos" role="list">
+                {
+                  plan.map((step) => (
+                    <li>
+                      <span class="check">
+                        <Glyph name="todo" />
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
 

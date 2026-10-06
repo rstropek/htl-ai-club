@@ -5,7 +5,7 @@
   color-scheme: dark;
   --bg: #131215;
   --fg: #ece9e5;
-  --dim: #a29da8;
+  --dim: #b6b1bb;
   --rule: #3a3740;
   --hover: #1e1c21;
   --accent: #ff5c93;
@@ -30,7 +30,7 @@
   color-scheme: light;
   --bg: #fcfbfa;
   --fg: #1c1a1f;
-  --dim: #5e5965;
+  --dim: #524d58;
   --rule: #d9d5dd;
   --hover: #f2f0ee;
   --accent: #c2185b;
@@ -66,8 +66,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
-  font-size: clamp(14.5px, 13.4px + 0.3vw, 17px);
-  line-height: 1.6;
+  font-size: clamp(16px, 15.2px + 0.2vw, 18px);
+  line-height: 1.68;
   font-feature-settings: 'calt' 1, 'liga' 1;
   font-variant-numeric: tabular-nums;
   caret-color: var(--accent);
@@ -377,6 +377,10 @@ button {
   display: grid;
   text-decoration: none;
 }
+.side-next small {
+  font-size: inherit;
+  color: var(--fg);
+}
 .side-next span {
   text-decoration: underline;
   text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
@@ -390,6 +394,9 @@ button {
   display: grid;
   grid-template-columns: 3ch 1fr;
   text-wrap: pretty;
+}
+.tip-n {
+  color: var(--dim);
 }
 
 @media (min-width: 52rem) {
@@ -431,7 +438,7 @@ button {
   min-width: 0;
 }
 .prose {
-  max-width: 74ch;
+  max-width: 64ch;
 }
 .prose > * + * {
   margin-top: 0.9em;
@@ -469,6 +476,21 @@ button {
 }
 .note {
   margin-top: 0.5em;
+}
+
+/* the session plan, as an agent todo list */
+
+.todos {
+  margin-top: 0.3em;
+}
+.todos li {
+  display: grid;
+  grid-template-columns: 2.4ch minmax(0, 1fr);
+  text-wrap: pretty;
+}
+.todos .check {
+  grid-area: auto;
+  color: var(--dim);
 }
 
 /* diff */
@@ -547,7 +569,6 @@ button {
 .date {
   grid-area: date;
   white-space: nowrap;
-  color: var(--dim);
 }
 .hint {
   grid-area: hint;
@@ -556,7 +577,8 @@ button {
 .hint:empty {
   display: none;
 }
-.row[aria-expanded='true'] .hint {
+.row[aria-expanded='true'] .hint,
+.js .session:not([data-hint]) .hint {
   display: none;
 }
 

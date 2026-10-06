@@ -12,8 +12,8 @@ colors:
   paper-dark: "#131215"
   ink: "#1c1a1f"
   ink-dark: "#ece9e5"
-  dim-ink: "#5e5965"
-  dim-ink-dark: "#a29da8"
+  dim-ink: "#524d58"
+  dim-ink-dark: "#b6b1bb"
   rule: "#d9d5dd"
   rule-dark: "#3a3740"
   hover-wash: "#f2f0ee"
@@ -33,30 +33,30 @@ colors:
 typography:
   body:
     fontFamily: "'Monaspace Neon', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace"
-    fontSize: "clamp(14.5px, 13.4px + 0.3vw, 17px)"
+    fontSize: "clamp(16px, 15.2px + 0.2vw, 18px)"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.68
     fontFeature: "'calt' 1, 'liga' 1, tabular-nums"
   title:
     fontFamily: "'Monaspace Neon', ui-monospace, monospace"
     fontSize: "1em"
     fontWeight: 700
-    lineHeight: 1.6
+    lineHeight: 1.68
   human:
     fontFamily: "'Monaspace Radon', 'Monaspace Neon', ui-monospace, monospace"
     fontSize: "1em"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.68
   label:
     fontFamily: "'Monaspace Neon', ui-monospace, monospace"
     fontSize: "0.92em"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.68
   footnote:
     fontFamily: "'Monaspace Neon', ui-monospace, monospace"
     fontSize: "0.88em"
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.68
 rounded:
   focus: "3px"
   row: "4px"
@@ -72,7 +72,7 @@ spacing:
   page-inline: "16px"
   page-inline-wide: "32px"
   column: "92ch"
-  prose: "74ch"
+  prose: "64ch"
 components:
   command-key:
     textColor: "{colors.ink}"
@@ -173,6 +173,8 @@ A neutral terminal ground with exactly one voice of colour, the club's hot pink,
 
 **The Semantics-Only Green and Red Rule.** Green and red exist because the session prints them: finished tool calls and diff lines. They never appear as brand colour, status badges or decoration.
 
+**The Dim Is Chrome Rule.** Dim ink is for chrome only: numbers, labels, captions, file paths, hints. Anything a visitor reads for meaning (dates, places, tips, prose) is full ink. Dim text stays well under half the page.
+
 **The Two Measured Themes Rule.** Every colour token exists in a dark and a light value. Dark is the default for every visitor regardless of system preference; light applies only through `data-theme="light"`, set by `/theme` and remembered per visitor. A new token is not finished until both values are measured against their ground.
 
 ## Typography
@@ -183,7 +185,7 @@ A neutral terminal ground with exactly one voice of colour, the club's hot pink,
 **Character:** Neon is the even, engineered voice of the agent; Radon's handwritten italic-cursive forms mark every line a person typed: the prompt band, echoed answers in the log, the input field and its placeholder. The pairing tells the reader who is speaking without a single label.
 
 ### Hierarchy
-- **Body** (Neon 400, `clamp(14.5px, 13.4px + 0.3vw, 17px)`, line-height 1.6): everything. Ligatures and contextual alternates on, tabular numerals on. Prose is capped at 74ch inside a 92ch column.
+- **Body** (Neon 400, `clamp(16px, 15.2px + 0.2vw, 18px)`, line-height 1.68): everything. Ligatures and contextual alternates on, tabular numerals on. Prose is capped at 64ch inside a 92ch column: monospace letters are wide, so a shorter measure reads like a normal line. 16px is the floor on phones.
 - **Title** (Neon 700, same size): tool names (`Read`, `Update`), the club's full name, "Next session", the permission question, the next session's title, inline emphasis. Weight is the only heading device.
 - **Human** (Radon 400, same size): what the human types.
 - **Label** (Neon 400, 0.92em): expand hints, keyboard hints, the status line.
@@ -236,7 +238,9 @@ A line the human typed: a prompt-wash band with 4px corners, pulled out by 1ch o
 A dot in the gutter, body to the right. Agent messages use an ink dot; finished tool calls use the green dot and a bold tool name with a dim path in parentheses. Results hang under an elbow glyph, first line dim. Lists use a dim `-` (pitch) or `·` (agenda) in a 2ch marker column.
 
 ### Session checklist (signature)
-Each session is a full-width button row: checkbox, dim number, title ("Club meeting" unless the event has a name), dim date with start time, and a dim `… +N lines (ctrl+o to expand)` hint (`tap to expand` on touch). Done sessions are dimmed and struck through with a cross in the box; the next session gets a filled pink box, bold title, pink date and a pink `← next` tag, and opens by default. Rows take the hover wash at 4px. Expanding animates `grid-template-rows` over 0.32s and reveals a nested `Read(sessions/…md)` call with a key/value result: `when` (date and time range) and `where` (the place, HTL Leonding unless set). Optional detail rows (what, agenda, bring, level, needs, host, link) appear only when the data has them; currently only dates and times are announced.
+The session plan is an `Update Todos` tool call: a dim caption ("How every session runs") and empty checkboxes in the shared 2.4ch column, one step per line. Same checkbox glyph as the session list, never ticked, because it is a plan rather than progress.
+
+Each session is a full-width button row: checkbox, dim number, title ("Club meeting" unless the event has a name), date with start time in full ink, and a dim `… +N lines (ctrl+o to expand)` hint (`tap to expand` on touch) shown only on the first collapsed row of each list, so the gesture is taught once instead of repeated. Done sessions are dimmed and struck through with a cross in the box; the next session gets a filled pink box, bold title, pink date and a pink `← next` tag, and opens by default. Rows take the hover wash at 4px. Expanding animates `grid-template-rows` over 0.32s and reveals a nested `Read(sessions/…md)` call with a key/value result: `when` (date and time range) and `where` (the place, HTL Leonding unless set). Optional detail rows (what, agenda, bring, level, needs, host, link) appear only when the data has them; currently only dates and times are announced.
 
 ### Diff
 Line-numbered rows in a 4px-rounded block: context in dim ink, removed lines on the red wash, added lines on the green wash, numbers at 80% opacity within coloured rows.

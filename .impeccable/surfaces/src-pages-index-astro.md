@@ -23,7 +23,7 @@ OWN-WORLD: Full-bleed terminal ground in both themes; Monaspace Neon for the age
 
 STORY: A student sees the next date, reads what the club does, picks a session to see its details, sees an example of a swapped trick, and approves the join prompt.
 
-FIRST VIEWPORT: Welcome box: block-letter AI CLUB banner, full name and cwd on the left; Next session (the only pink heading) and tips on the right, stacked under the banner on phones. Then the typed question, a status-line beat, and the streamed pitch; on desktop the semester checklist starts in view.
+FIRST VIEWPORT: Welcome box: block-letter AI CLUB banner, full name and cwd on the left; Next session (the only pink heading) and tips on the right, stacked under the banner on phones. Then the typed question, a status-line beat, and the streamed pitch, set at a 16px phone / 18px desktop reading size (readability outranks fitting the checklist into the first desktop viewport).
 
 FORM: User-pinned direction (Claude Code session replay, variant A of three), overriding the roll; seed key 947183a8.
 
