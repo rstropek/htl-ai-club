@@ -36,11 +36,11 @@
 .p-msg {
   display: grid;
   grid-template-columns: 1.4em 1fr;
-  margin-top: 0.9em;
+  margin-top: 0.8em;
 }
 
 .p-logo {
-  margin: 0.75em 0 0.8em;
+  margin: 0.65em 0 0.7em;
   width: 580px;
   max-width: 100%;
 }
@@ -120,10 +120,11 @@
   display: grid;
   grid-template-columns: 300px minmax(0, 1fr) auto;
   align-items: center;
-  column-gap: 40px;
-  padding-top: 34px;
+  column-gap: 36px;
+  padding-top: 28px;
   border-top: 2px dashed var(--rule);
   font-size: 28px;
+  line-height: 1.3;
 }
 .p-banner .banner {
   display: block;
@@ -132,7 +133,30 @@
 }
 .p-sender {
   display: grid;
+  white-space: nowrap;
 }
 .p-site {
   font-size: 26px;
+}
+
+/* the bus sponsor, thanked in the status line; its logo needs a light ground, like the QR code */
+.p-sponsor {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.p-thanks {
+  text-align: right;
+  white-space: nowrap;
+}
+.p-sponsor-tile {
+  display: block;
+  padding: 14px 20px;
+  border-radius: 10px;
+  background: #f6f4f1;
+}
+.p-sponsor-tile img {
+  display: block;
+  height: 66px;
+  width: auto;
 }

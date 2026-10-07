@@ -238,7 +238,7 @@ A line the human typed: a prompt-wash band with 4px corners, pulled out by 1ch o
 A dot in the gutter, body to the right. Agent messages use an ink dot; finished tool calls use the green dot and a bold tool name with a dim path in parentheses. Results hang under an elbow glyph, first line dim. Lists use a dim `-` (pitch) or `·` (agenda) in a 2ch marker column.
 
 ### Session checklist (signature)
-The sign-up QR code sits in the join prompt's right column on screens 44rem and wider, hidden on phones (the visitor already holds the link). It is drawn like the banner, as square terminal cells, but always near-black cells on a light tile in both themes, because scanners need luminance contrast; pink-on-black is never used for a code. A dim "scan to sign up" caption sits under it. The same code ships as `/qr-signup.svg` for print.
+The sign-up QR code sits in the join prompt's right column on screens 44rem and wider, hidden on phones (the visitor already holds the link). It is drawn like the banner, as square terminal cells, but always near-black cells on a light tile in both themes, because scanners need luminance contrast; pink-on-black is never used for a code. A partner logo made for a white ground (the bus sponsor's, in the promo's status line) sits on the same light tile rather than being recoloured. A dim "scan to sign up" caption sits under it. The same code ships as `/qr-signup.svg` for print.
 
 The session plan is an `Update Todos` tool call: a dim caption ("How every session runs") and empty checkboxes in the shared 2.4ch column, one step per line. Same checkbox glyph as the session list, never ticked, because it is a plan rather than progress.
 
